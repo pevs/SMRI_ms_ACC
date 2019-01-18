@@ -1,0 +1,157 @@
+
+
+
+
+
+ 
+
+
+ 
+
+
+<!-- 
+  Copyright (c) 2013-2017 Broad Institute, Inc., Massachusetts Institute of Technology, and Regents of the University of California.  All rights reserved.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <base href="http://software.broadinstitute.org/gsea/" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="verify-v1" content="/23Jlayki9tnRqU7DcCYrbFI7zPmHJ3HfeZltM6mK5Q=" />
+    <title>GSEA | Login</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-91324021-1', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+
+  <div id="logo"><a href="index.jsp"><img src="images/GSEA-logo.gif" border="0" /></a></div>
+
+  <div id="wrapper">
+    <div id="breadcrumbs"><a href="login.jsp">login</a><br/><a href="register.jsp">register</a></div>
+  
+    <div id="search">
+<!-- hiding search until we have it working with proper data
+      <form action="site_search.jsp" id="searchbox_013576394069784578328:3dysd5dqgmw">
+        <input type="hidden" name="cx" value="013576394069784578328:3dysd5dqgmw" />
+        <input type="hidden" name="cof" value="FORID:9" />
+        <input type="text" name="q" />
+        <input type="submit" name="sa" value="Search" />
+      </form>
+-->
+    </div>
+  
+    <!-- top horizontal nav bar -->
+    <div id="topnavs">
+      <ul>
+        <li><a href="index.jsp" rel="nofollow" >GSEA Home</a></li>
+        <li><a href="downloads.jsp" rel="nofollow" >Downloads</a></li>
+        <li><a href="msigdb/index.jsp" >Molecular Signatures Database</a></li>
+        <li><a href="http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Main_Page">Documentation</a></li>
+        <li><a href="contact.jsp" rel="nofollow" >Contact</a></li>
+        
+      </ul>
+    </div>
+
+
+<!-- start content wrapper -->
+<div id="contentwrapper">
+
+
+  <div id="content_full">
+    
+    
+    
+        
+          
+            <h1>Login to GSEA/MSigDB</h1>
+            <h2>Login</h2>
+            <a href="register.jsp"/>Click here</a> to register to view the MSigDB gene sets and/or download the GSEA software. This helps us track and better serve our user community.<br/><br/>
+            If you have already registered for GSEA or MSigDB please enter your registration email address below.<br/><br/>
+          
+          
+        
+        <form id="loginForm" name="loginForm" action="j_spring_security_check" method="POST">
+          <table border="0" class="bodyfont" cellpadding="5" cellspacing="5">
+            <tr>
+              <td colspan="2" align="left">Items marked with <font color="red">*</font> are required.</td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td><h3>Email:&nbsp;<font color="red">*</font>&nbsp;</h3></td>
+              <td><input id="email" type="text" name="j_username" value=''/>
+              <input id="password" type="hidden" name="j_password" value="password"/></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><input type="button" name="login" value="login" style="margin-top:10px;" onclick="validateForm()"/></td>
+            </tr>
+          </table>
+        </form>
+        <script type="text/javascript">
+          function getEmail() {
+            var emailElt = document.getElementById('email');
+            var email = trimToNull(emailElt.value);
+            return email;
+          }
+          function trimToNull(str) {
+            if (str == null) return null;
+            str = str.replace(/^\s*((?:[\S\s]*\S)?)\s*$/, '$1');
+            return ("" == str) ? null : str;
+          }
+          function validateForm() {
+            if (!getEmail()) {
+              alert("Please enter an email address.");
+              document.loginForm.email.select();
+              return false;
+            }
+            document.loginForm.submit();
+          }
+        </script>
+        
+
+        
+        
+    
+  </div>
+</div>
+<div id="footer"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top" style="padding-right: 8px;">
+      <img src="images/BroadLogo.png" width="150" height="39" border="0" align="left" />
+      <img src="images/UCSDlogo.png" width="146" height="33" border="0" align="right" />
+    </td>
+    <td valign="top" align="center" style="width: 50%; padding-right: 5%; padding-left:5%;">
+      <div align="left">
+        Copyright (c) 2004-2017 Broad Institute, Inc.,
+        Massachusetts Institute of Technology, and Regents of the University of California.
+        All rights reserved.
+      </div>
+    </td>
+    <td valign="top">
+      <div align="right">
+         MSigDB database v6.1 updated October 2017<br />GSEA/MSigDB web site v6.3 released January 2018
+      </div>
+    </td>
+  </tr>
+</table>
+</div>
+</div>
+<!--wrapper ends here -->
+
+</body>
+</html>
+
