@@ -1,0 +1,824 @@
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ### Preprocessing featureCounts results: genes & exons
+> ### Alexis Norris
+> ### Created: 2018-02-28 (Andrew Jaffe)
+> ### Modified: 2018-03-02
+> ### For HPC!
+> 
+> # IMPORTANT: wd should be "hisat2_hg19"
+> setwd("../hisat2_hg19")
+> Sys.time()
+[1] "2018-03-07 17:46:15 EST"
+> 
+> # Packages ----------------------------------
+> #library(tidyverse) # install failed on cluster
+> library(magrittr)
+> library(readr)
+> 
+> 
+> # Load lieber_functions_ajr.R ----------------
+> # jaffelab pkg requires R >= 3.3.0, so needed to download that 
+> #library("devtools")
+> #install_github("LieberInstitute/jaffelab") 
+> #library("jaffelab")
+> ### Issues loading the library on cluster, because updated R won't configure because of zlib not being detected as updated (it should be in path though!)
+> ### So load the functions here instead
+> ss <- function (x, pattern, slot = 1, ...) {
++     sapply(strsplit(x = x, split = pattern, ...), "[", slot)
++ }
+> 
+> # Load phenoData -----------------------------
+> pd <- read_tsv("featureCounts_phenoData.txt") # must have "totalMapped" column
+Parsed with column specification:
+cols(
+  FileName = col_character(),
+  A_Code = col_character(),
+  totalMapped = col_integer()
+)
+> pd$full_path <- paste0("bams/", pd$FileName, ".bam")
+> 
+> ### Make sure no duplicates
+> pd <- pd[!duplicated(pd), ]  
+> 
+> # LibSize ------------------------------------
+> ### Use totalLibSize calculated for qSVA
+> print(head(pd))
+# A tibble: 6 x 4
+  FileName           A_Code totalMapped full_path                  
+  <chr>              <chr>        <int> <chr>                      
+1 S39_NoIndex_L006   A1       237169682 bams/S39_NoIndex_L006.bam  
+2 S_170_NoIndex_L003 A10      194726219 bams/S_170_NoIndex_L003.bam
+3 S451_NoIndex_L002  A100     306267596 bams/S451_NoIndex_L002.bam 
+4 S452_NoIndex_L006  A101     256157615 bams/S452_NoIndex_L006.bam 
+5 S456_NoIndex_L006  A102     228659501 bams/S456_NoIndex_L006.bam 
+6 S468_NoIndex_L007  A103     391756411 bams/S468_NoIndex_L007.bam 
+> 
+> # Packages -----------------------------------
+> library(GenomicRanges)
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, as.vector, cbind, colnames,
+    do.call, duplicated, eval, evalq, Filter, Find, get, grep, grepl,
+    intersect, is.unsorted, lapply, lengths, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unlist, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+> library(GenomicFeatures)
+Loading required package: AnnotationDbi
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+> library(org.Hs.eg.db)
+
+> library(biomaRt)
+> 
+> # Gene Counts --------------------------------
+> ### Load gene count files 
+> geneFn <- paste0("counts/genes/", 
++                  pd$FileName, 
++                  ".counts")
+> names(geneFn) <- pd$FileName
+> table(file.exists(geneFn))
+
+TRUE 
+ 100 
+> 
+> ### Load gene annotation 
+> geneMap <- read.delim(geneFn[1], skip = 1, as.is = TRUE)[ ,1:6]
+> rownames(geneMap) <- geneMap$Geneid
+> geneMap$Chr <- paste0("chr", ss(geneMap$Chr, ";"))
+> geneMap$Start <- as.numeric(ss(geneMap$Start, ";"))
+> tmp <- strsplit(geneMap$End, ";")
+> geneMap$End <- as.numeric(sapply(tmp, function(x) x[length(x)]))
+> geneMap$Strand <- ss(geneMap$Strand, ";")
+> geneMap$Geneid <- NULL
+> 
+> ### Annotate with biomaRt  
+> ensembl <- useMart(
++   "ENSEMBL_MART_ENSEMBL", # VERSION 75, hg19
++ 	dataset = "hsapiens_gene_ensembl",
++ 	host = "feb2014.archive.ensembl.org"
++ )
+> sym <- getBM(
++   attributes = c("ensembl_gene_id",
++                  "hgnc_symbol",
++                  "entrezgene"), 
++ 	values = rownames(geneMap), 
++   mart = ensembl
++ )
+> geneMap$Symbol <- sym$hgnc_symbol[match(rownames(geneMap), 
++                                         sym$ensembl_gene_id)]
+> geneMap$EntrezID <- sym$entrezgene[match(rownames(geneMap), 
++                                          sym$ensembl_gene_id)]
+> 	
+> ### Get counts 
+> geneCountList <- mclapply(geneFn, function(x) {
++ 	cat(".")
++ 	read.delim(pipe(paste("cut -f7", x)), as.is = TRUE, skip = 1)[ ,1]
++ }, mc.cores = 12)
+.......................................................................................> geneCounts <- do.call("cbind", geneCountList)
+> rownames(geneCounts) <- rownames(geneMap)
+> head(geneCounts)
+                  S39_NoIndex_L006 S_170_NoIndex_L003 S451_NoIndex_L002
+ENSG00000223972.4                0                  1                 6
+ENSG00000227232.4              167                113               228
+ENSG00000243485.2                0                 18                 8
+ENSG00000237613.2                0                  0                 0
+ENSG00000268020.2                9                  0                 0
+ENSG00000240361.1                0                  0                 0
+                  S452_NoIndex_L006 S456_NoIndex_L006 S468_NoIndex_L007
+ENSG00000223972.4                 2                 8                 5
+ENSG00000227232.4               351               175               340
+ENSG00000243485.2                 2                 2                14
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S476_NoIndex_L008 S175_NoIndex_L002 S187_NoIndex_L008
+ENSG00000223972.4                10                 6                 7
+ENSG00000227232.4               263               181               455
+ENSG00000243485.2                 4                 8                24
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 1                 0
+ENSG00000240361.1                 0                 0                 0
+                  S189_NoIndex_L002 S192_NoIndex_L008 S_193_NoIndex_L001
+ENSG00000223972.4                31                 9                  7
+ENSG00000227232.4               113               444                273
+ENSG00000243485.2                 0                 5                  0
+ENSG00000237613.2                 0                 0                  0
+ENSG00000268020.2                 0                 0                  0
+ENSG00000240361.1                 0                 0                  0
+                  S198_NoIndex_L003 S_199_NoIndex_L002 S201_NoIndex_L002
+ENSG00000223972.4                 6                  2                11
+ENSG00000227232.4                47                142               378
+ENSG00000243485.2                 0                 31                14
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S203_NoIndex_L006 S42_NoIndex_L001 204S_NoIndex_L001
+ENSG00000223972.4                 0               12                 4
+ENSG00000227232.4               197              259               190
+ENSG00000243485.2                 0               16                 1
+ENSG00000237613.2                 0                0                 0
+ENSG00000268020.2                 0                0                 0
+ENSG00000240361.1                 0                0                 0
+                  S212_NoIndex_L008 S_213_NoIndex_L003 S217_NoIndex_L003
+ENSG00000223972.4                 5                 12                10
+ENSG00000227232.4               326                300               262
+ENSG00000243485.2                 1                  0                 0
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S222_NoIndex_L007 S224_NoIndex_L007 226S_NoIndex_L004
+ENSG00000223972.4                17                16                 0
+ENSG00000227232.4               291               310               306
+ENSG00000243485.2                 0                 4                 0
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S227_NoIndex_L004 S438_NoIndex_L004 229S_NoIndex_L003
+ENSG00000223972.4                 5                 1                 2
+ENSG00000227232.4               368                63               323
+ENSG00000243485.2                13                 0                 3
+ENSG00000237613.2                 1                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S110_NoIndex_L007 231S_NoIndex_L003 S235_NoIndex_L005
+ENSG00000223972.4                 2                33                 2
+ENSG00000227232.4               290               274               579
+ENSG00000243485.2                 0                 1                 7
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S450_NoIndex_L003 S238_NoIndex_L001 S244_NoIndex_L008
+ENSG00000223972.4                 4                 3                 0
+ENSG00000227232.4               273               232               113
+ENSG00000243485.2                31                25                 1
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S255_NoIndex_L006 S262_NoIndex_L006 S268_NoIndex_L007
+ENSG00000223972.4                 4                17                 3
+ENSG00000227232.4               320               334               509
+ENSG00000243485.2                 6                22                 8
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S270_NoIndex_L003 S111_NoIndex_L006 S280_NoIndex_L003
+ENSG00000223972.4                 0                 7                 3
+ENSG00000227232.4                66               339               517
+ENSG00000243485.2                 0                 2                12
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S286_NoIndex_L008 S_289_NoIndex_L004 S290_NoIndex_L001
+ENSG00000223972.4                 6                  0                 2
+ENSG00000227232.4               365                199               346
+ENSG00000243485.2                 3                  0                 2
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S291_NoIndex_L004 S_298_NoIndex_L005 S299_NoIndex_L005
+ENSG00000223972.4                20                  0                 0
+ENSG00000227232.4               182                204                87
+ENSG00000243485.2                 3                 27                 0
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S302_NoIndex_L002 S306_NoIndex_L007 S113_NoIndex_L004
+ENSG00000223972.4                 4                 8                 4
+ENSG00000227232.4               166               367               315
+ENSG00000243485.2                 2                 9                21
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S314_NoIndex_L007 S321_NoIndex_L001 S_326_NoIndex_L004
+ENSG00000223972.4                 1                23                  8
+ENSG00000227232.4                73               424                249
+ENSG00000243485.2                11                 2                  0
+ENSG00000237613.2                 0                 0                  0
+ENSG00000268020.2                 0                 0                  0
+ENSG00000240361.1                 0                 0                  0
+                  S328_NoIndex_L008 333S_NoIndex_L007 S335_NoIndex_L008
+ENSG00000223972.4                 2                 6                11
+ENSG00000227232.4               208               307               201
+ENSG00000243485.2                 8                 8                 2
+ENSG00000237613.2                 0                 1                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S336_NoIndex_L006 S_340_NoIndex_L006
+ENSG00000223972.4                 0                  3
+ENSG00000227232.4               194                188
+ENSG00000243485.2                17                  0
+ENSG00000237613.2                 0                  0
+ENSG00000268020.2                 0                  0
+ENSG00000240361.1                 0                  0
+                  12_4_13_OCL2_342h_NoIndex_L008 S119_NoIndex_L003
+ENSG00000223972.4                              1                 7
+ENSG00000227232.4                            129               386
+ENSG00000243485.2                              0                 6
+ENSG00000237613.2                              0                 0
+ENSG00000268020.2                              0                 0
+ENSG00000240361.1                              0                 0
+                  350S_NoIndex_L005 S354_NoIndex_L001 S356_NoIndex_L004
+ENSG00000223972.4                 8                 4                 4
+ENSG00000227232.4               322               146               411
+ENSG00000243485.2                 7                30                 0
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S_357_NoIndex_L007 S_359_NoIndex_L008 S361_NoIndex_L007
+ENSG00000223972.4                  2                 20                 0
+ENSG00000227232.4                335                425               163
+ENSG00000243485.2                 40                  0                 0
+ENSG00000237613.2                  0                  0                 0
+ENSG00000268020.2                  0                  0                 0
+ENSG00000240361.1                  0                  0                 0
+                  S365_NoIndex_L008 S368_NoIndex_L003 S_369_NoIndex_L005
+ENSG00000223972.4                 0                 7                  8
+ENSG00000227232.4               152               388                344
+ENSG00000243485.2                 1                 3                  0
+ENSG00000237613.2                 0                 0                  0
+ENSG00000268020.2                 0                 0                  0
+ENSG00000240361.1                 0                 0                  0
+                  S373_NoIndex_L005 S133_NoIndex_L005 S377_NoIndex_L001
+ENSG00000223972.4                 4                 1                 0
+ENSG00000227232.4               278               133               157
+ENSG00000243485.2                 3                 0                 1
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S380_NoIndex_L002 381S_NoIndex_L002
+ENSG00000223972.4                 6                 7
+ENSG00000227232.4               276               216
+ENSG00000243485.2                 8                 2
+ENSG00000237613.2                 0                 0
+ENSG00000268020.2                 0                 0
+ENSG00000240361.1                 0                 0
+                  12_4_13_OCL1_387h_NoIndex_L008 S391_NoIndex_L006
+ENSG00000223972.4                              1                 1
+ENSG00000227232.4                            126               220
+ENSG00000243485.2                              1                 1
+ENSG00000237613.2                              0                 0
+ENSG00000268020.2                              0                 0
+ENSG00000240361.1                              0                 0
+                  S392_NoIndex_L005 S393_NoIndex_L004 S395_NoIndex_L005
+ENSG00000223972.4                 3                 8                 3
+ENSG00000227232.4               464               297               269
+ENSG00000243485.2                 1                 1                 0
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S399_NoIndex_L002 S400_NoIndex_L007 S155_NoIndex_L007
+ENSG00000223972.4                 0                 5                 3
+ENSG00000227232.4                82               372               394
+ENSG00000243485.2                 0                 4                 5
+ENSG00000237613.2                 0                 1                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  401S_NoIndex_L004 S_404_NoIndex_L006 409S_NoIndex_L006
+ENSG00000223972.4                 1                  2                 2
+ENSG00000227232.4               237                160               291
+ENSG00000243485.2                 3                  1                23
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S411_NoIndex_L003 S412_NoIndex_L005 414S_NoIndex_L008
+ENSG00000223972.4                 4                 4                11
+ENSG00000227232.4               261               303               289
+ENSG00000243485.2                 0                 3                 5
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S415_NoIndex_L002 S421_NoIndex_L004 422S_NoIndex_L002
+ENSG00000223972.4                 7                 7                 8
+ENSG00000227232.4               229                80               257
+ENSG00000243485.2                22                 1                 9
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S424_NoIndex_L003 167S_NoIndex_L007 S428_NoIndex_L005
+ENSG00000223972.4                 4                 0                 0
+ENSG00000227232.4               283               324                74
+ENSG00000243485.2                 3                 6                 0
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S_433_NoIndex_L007 S439_NoIndex_L004 S440_NoIndex_L001
+ENSG00000223972.4                  3                 0                 1
+ENSG00000227232.4                294               163               200
+ENSG00000243485.2                  5                 5                 1
+ENSG00000237613.2                  0                 0                 0
+ENSG00000268020.2                  0                 0                 0
+ENSG00000240361.1                  0                 0                 0
+                  S441_NoIndex_L005 S442_NoIndex_L008 S446_NoIndex_L006
+ENSG00000223972.4                 9                 1                 7
+ENSG00000227232.4               451               409               197
+ENSG00000243485.2                11                12                41
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S447_NoIndex_L004 S_449_NoIndex_L008
+ENSG00000223972.4                28                  0
+ENSG00000227232.4               527                566
+ENSG00000243485.2                 8                  1
+ENSG00000237613.2                 0                  0
+ENSG00000268020.2                 0                  0
+ENSG00000240361.1                 0                  0
+> 
+> ### Put in order
+> geneCounts <- geneCounts[ ,pd$FileName] 
+> 
+> ### Check
+> head(pd$totalMapped)
+[1] 237169682 194726219 306267596 256157615 228659501 391756411
+> dim(pd)
+[1] 100   4
+> dim(geneCounts)
+[1] 57820   100
+> head(geneCounts)
+                  S39_NoIndex_L006 S_170_NoIndex_L003 S451_NoIndex_L002
+ENSG00000223972.4                0                  1                 6
+ENSG00000227232.4              167                113               228
+ENSG00000243485.2                0                 18                 8
+ENSG00000237613.2                0                  0                 0
+ENSG00000268020.2                9                  0                 0
+ENSG00000240361.1                0                  0                 0
+                  S452_NoIndex_L006 S456_NoIndex_L006 S468_NoIndex_L007
+ENSG00000223972.4                 2                 8                 5
+ENSG00000227232.4               351               175               340
+ENSG00000243485.2                 2                 2                14
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S476_NoIndex_L008 S175_NoIndex_L002 S187_NoIndex_L008
+ENSG00000223972.4                10                 6                 7
+ENSG00000227232.4               263               181               455
+ENSG00000243485.2                 4                 8                24
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 1                 0
+ENSG00000240361.1                 0                 0                 0
+                  S189_NoIndex_L002 S192_NoIndex_L008 S_193_NoIndex_L001
+ENSG00000223972.4                31                 9                  7
+ENSG00000227232.4               113               444                273
+ENSG00000243485.2                 0                 5                  0
+ENSG00000237613.2                 0                 0                  0
+ENSG00000268020.2                 0                 0                  0
+ENSG00000240361.1                 0                 0                  0
+                  S198_NoIndex_L003 S_199_NoIndex_L002 S201_NoIndex_L002
+ENSG00000223972.4                 6                  2                11
+ENSG00000227232.4                47                142               378
+ENSG00000243485.2                 0                 31                14
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S203_NoIndex_L006 S42_NoIndex_L001 204S_NoIndex_L001
+ENSG00000223972.4                 0               12                 4
+ENSG00000227232.4               197              259               190
+ENSG00000243485.2                 0               16                 1
+ENSG00000237613.2                 0                0                 0
+ENSG00000268020.2                 0                0                 0
+ENSG00000240361.1                 0                0                 0
+                  S212_NoIndex_L008 S_213_NoIndex_L003 S217_NoIndex_L003
+ENSG00000223972.4                 5                 12                10
+ENSG00000227232.4               326                300               262
+ENSG00000243485.2                 1                  0                 0
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S222_NoIndex_L007 S224_NoIndex_L007 226S_NoIndex_L004
+ENSG00000223972.4                17                16                 0
+ENSG00000227232.4               291               310               306
+ENSG00000243485.2                 0                 4                 0
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S227_NoIndex_L004 S438_NoIndex_L004 229S_NoIndex_L003
+ENSG00000223972.4                 5                 1                 2
+ENSG00000227232.4               368                63               323
+ENSG00000243485.2                13                 0                 3
+ENSG00000237613.2                 1                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S110_NoIndex_L007 231S_NoIndex_L003 S235_NoIndex_L005
+ENSG00000223972.4                 2                33                 2
+ENSG00000227232.4               290               274               579
+ENSG00000243485.2                 0                 1                 7
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S450_NoIndex_L003 S238_NoIndex_L001 S244_NoIndex_L008
+ENSG00000223972.4                 4                 3                 0
+ENSG00000227232.4               273               232               113
+ENSG00000243485.2                31                25                 1
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S255_NoIndex_L006 S262_NoIndex_L006 S268_NoIndex_L007
+ENSG00000223972.4                 4                17                 3
+ENSG00000227232.4               320               334               509
+ENSG00000243485.2                 6                22                 8
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S270_NoIndex_L003 S111_NoIndex_L006 S280_NoIndex_L003
+ENSG00000223972.4                 0                 7                 3
+ENSG00000227232.4                66               339               517
+ENSG00000243485.2                 0                 2                12
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S286_NoIndex_L008 S_289_NoIndex_L004 S290_NoIndex_L001
+ENSG00000223972.4                 6                  0                 2
+ENSG00000227232.4               365                199               346
+ENSG00000243485.2                 3                  0                 2
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S291_NoIndex_L004 S_298_NoIndex_L005 S299_NoIndex_L005
+ENSG00000223972.4                20                  0                 0
+ENSG00000227232.4               182                204                87
+ENSG00000243485.2                 3                 27                 0
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S302_NoIndex_L002 S306_NoIndex_L007 S113_NoIndex_L004
+ENSG00000223972.4                 4                 8                 4
+ENSG00000227232.4               166               367               315
+ENSG00000243485.2                 2                 9                21
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S314_NoIndex_L007 S321_NoIndex_L001 S_326_NoIndex_L004
+ENSG00000223972.4                 1                23                  8
+ENSG00000227232.4                73               424                249
+ENSG00000243485.2                11                 2                  0
+ENSG00000237613.2                 0                 0                  0
+ENSG00000268020.2                 0                 0                  0
+ENSG00000240361.1                 0                 0                  0
+                  S328_NoIndex_L008 333S_NoIndex_L007 S335_NoIndex_L008
+ENSG00000223972.4                 2                 6                11
+ENSG00000227232.4               208               307               201
+ENSG00000243485.2                 8                 8                 2
+ENSG00000237613.2                 0                 1                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S336_NoIndex_L006 S_340_NoIndex_L006
+ENSG00000223972.4                 0                  3
+ENSG00000227232.4               194                188
+ENSG00000243485.2                17                  0
+ENSG00000237613.2                 0                  0
+ENSG00000268020.2                 0                  0
+ENSG00000240361.1                 0                  0
+                  12_4_13_OCL2_342h_NoIndex_L008 S119_NoIndex_L003
+ENSG00000223972.4                              1                 7
+ENSG00000227232.4                            129               386
+ENSG00000243485.2                              0                 6
+ENSG00000237613.2                              0                 0
+ENSG00000268020.2                              0                 0
+ENSG00000240361.1                              0                 0
+                  350S_NoIndex_L005 S354_NoIndex_L001 S356_NoIndex_L004
+ENSG00000223972.4                 8                 4                 4
+ENSG00000227232.4               322               146               411
+ENSG00000243485.2                 7                30                 0
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S_357_NoIndex_L007 S_359_NoIndex_L008 S361_NoIndex_L007
+ENSG00000223972.4                  2                 20                 0
+ENSG00000227232.4                335                425               163
+ENSG00000243485.2                 40                  0                 0
+ENSG00000237613.2                  0                  0                 0
+ENSG00000268020.2                  0                  0                 0
+ENSG00000240361.1                  0                  0                 0
+                  S365_NoIndex_L008 S368_NoIndex_L003 S_369_NoIndex_L005
+ENSG00000223972.4                 0                 7                  8
+ENSG00000227232.4               152               388                344
+ENSG00000243485.2                 1                 3                  0
+ENSG00000237613.2                 0                 0                  0
+ENSG00000268020.2                 0                 0                  0
+ENSG00000240361.1                 0                 0                  0
+                  S373_NoIndex_L005 S133_NoIndex_L005 S377_NoIndex_L001
+ENSG00000223972.4                 4                 1                 0
+ENSG00000227232.4               278               133               157
+ENSG00000243485.2                 3                 0                 1
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S380_NoIndex_L002 381S_NoIndex_L002
+ENSG00000223972.4                 6                 7
+ENSG00000227232.4               276               216
+ENSG00000243485.2                 8                 2
+ENSG00000237613.2                 0                 0
+ENSG00000268020.2                 0                 0
+ENSG00000240361.1                 0                 0
+                  12_4_13_OCL1_387h_NoIndex_L008 S391_NoIndex_L006
+ENSG00000223972.4                              1                 1
+ENSG00000227232.4                            126               220
+ENSG00000243485.2                              1                 1
+ENSG00000237613.2                              0                 0
+ENSG00000268020.2                              0                 0
+ENSG00000240361.1                              0                 0
+                  S392_NoIndex_L005 S393_NoIndex_L004 S395_NoIndex_L005
+ENSG00000223972.4                 3                 8                 3
+ENSG00000227232.4               464               297               269
+ENSG00000243485.2                 1                 1                 0
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S399_NoIndex_L002 S400_NoIndex_L007 S155_NoIndex_L007
+ENSG00000223972.4                 0                 5                 3
+ENSG00000227232.4                82               372               394
+ENSG00000243485.2                 0                 4                 5
+ENSG00000237613.2                 0                 1                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  401S_NoIndex_L004 S_404_NoIndex_L006 409S_NoIndex_L006
+ENSG00000223972.4                 1                  2                 2
+ENSG00000227232.4               237                160               291
+ENSG00000243485.2                 3                  1                23
+ENSG00000237613.2                 0                  0                 0
+ENSG00000268020.2                 0                  0                 0
+ENSG00000240361.1                 0                  0                 0
+                  S411_NoIndex_L003 S412_NoIndex_L005 414S_NoIndex_L008
+ENSG00000223972.4                 4                 4                11
+ENSG00000227232.4               261               303               289
+ENSG00000243485.2                 0                 3                 5
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S415_NoIndex_L002 S421_NoIndex_L004 422S_NoIndex_L002
+ENSG00000223972.4                 7                 7                 8
+ENSG00000227232.4               229                80               257
+ENSG00000243485.2                22                 1                 9
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S424_NoIndex_L003 167S_NoIndex_L007 S428_NoIndex_L005
+ENSG00000223972.4                 4                 0                 0
+ENSG00000227232.4               283               324                74
+ENSG00000243485.2                 3                 6                 0
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S_433_NoIndex_L007 S439_NoIndex_L004 S440_NoIndex_L001
+ENSG00000223972.4                  3                 0                 1
+ENSG00000227232.4                294               163               200
+ENSG00000243485.2                  5                 5                 1
+ENSG00000237613.2                  0                 0                 0
+ENSG00000268020.2                  0                 0                 0
+ENSG00000240361.1                  0                 0                 0
+                  S441_NoIndex_L005 S442_NoIndex_L008 S446_NoIndex_L006
+ENSG00000223972.4                 9                 1                 7
+ENSG00000227232.4               451               409               197
+ENSG00000243485.2                11                12                41
+ENSG00000237613.2                 0                 0                 0
+ENSG00000268020.2                 0                 0                 0
+ENSG00000240361.1                 0                 0                 0
+                  S447_NoIndex_L004 S_449_NoIndex_L008
+ENSG00000223972.4                28                  0
+ENSG00000227232.4               527                566
+ENSG00000243485.2                 8                  1
+ENSG00000237613.2                 0                  0
+ENSG00000268020.2                 0                  0
+ENSG00000240361.1                 0                  0
+> 
+> ### Calculate RPKM 
+> bg <- matrix(
++   rep(pd$totalMapped), 
++   nc = nrow(pd), 
++   nr = nrow(geneCounts),	
++   byrow = TRUE)
+> widG <- matrix(
++   rep(geneMap$Length), 
++   nr = nrow(geneCounts), 
++ 	nc = nrow(pd),	
++   byrow = FALSE)
+> geneRpkm <- geneCounts / (widG/1000) / (bg/1e6)
+> 
+> ### number of reads assigned 
+> geneStatList <- lapply(
++   paste0(geneFn, ".summary"), 
++ 	read.delim,
++   row.names = 1)
+> geneStats <- do.call("cbind", geneStatList)
+> colnames(geneStats) <- pd$FileName 
+> pd$totalAssignedGene <- as.numeric(geneStats[1, ] / colSums(geneStats))
+> 
+> 
+> # Exon counts ---------------------------------
+> ### Filenames
+> exonFn <- paste0("counts/exons/", pd$FileName, ".counts")
+> names(exonFn) = pd$FileName
+> all(file.exists(exonFn))
+[1] TRUE
+> 
+> ### Load exon annotation 
+> exonMap <- read.delim(exonFn[1], skip = 1, as.is = TRUE)[ ,1:6]
+> exonMap$Symbol <- sym$hgnc_symbol[match(exonMap$Geneid, 
++                                         sym$ensembl_gene_id)]
+> exonMap$EntrezID <- sym$entrezgene[match(exonMap$Geneid, 
++                                          sym$ensembl_gene_id)]
+> rownames(exonMap) <- paste0("e", rownames(exonMap))
+> exonMap$Chr <- paste0("chr", exonMap$Chr)
+> 
+> ### Load counts
+> exonCountList <- mclapply(exonFn, function(x) {
++ 	cat(".")
++ 	read.delim(pipe(paste("cut -f7", x)), as.is = TRUE, skip = 1)[ ,1]
++ }, mc.cores = 12)
+...........................................................................................> exonCounts <- do.call("cbind", exonCountList)
+> rownames(exonCounts) <- rownames(exonMap)
+> 
+> ### Put in order
+> exonCounts <- exonCounts[ , pd$FileName] 
+> 
+> ### Remove duplicates
+> eMap <- GRanges(exonMap$Chr, IRanges(exonMap$Start, exonMap$End))
+> keepIndex <- which(!duplicated(eMap))
+> exonCounts <- exonCounts[keepIndex, ]
+> exonMap <- exonMap[keepIndex, ]
+> 
+> ### Calculate RPKM
+> bgE <- matrix(
++   rep(pd$totalMapped), 
++   nc = nrow(pd), 
++ 	nr = nrow(exonCounts),	
++   byrow = TRUE)
+> widE <- matrix(
++   rep(exonMap$Length), 
++   nr = nrow(exonCounts), 
++ 	nc = nrow(pd),	
++   byrow = FALSE)
+> exonRpkm = exonCounts / (widE/1000) / (bgE/1e6)
+> 
+>  
+> # Save counts ----------------------------
+> save(pd, 
++      geneCounts, geneMap, 
++      exonCounts, exonMap, 
++      compress = TRUE,
++      file = "rawCounts_n20_genes_exons_hpc.rda")
+> save(pd, 
++      geneRpkm,	geneMap, 
++      exonRpkm, exonMap, 
++      compress = TRUE,
++      file = "rpkmCounts_n20_genes_exons_hpc.rda")
+> 
+> # Write out for coverage ------------------
+> write_tsv(pd, "samples_with_bams_hpc.txt")
+> 
+> # Session info ---------------------------
+> library(sessioninfo)
+> sessioninfo::session_info()
+─ Session info ───────────────────────────────────────────────────────────────
+ setting  value                       
+ version  R version 3.2.3 (2015-12-10)
+ os       CentOS release 6.5 (Final)  
+ system   x86_64, linux-gnu           
+ ui       X11                         
+ language (EN)                        
+ collate  en_US.UTF-8                 
+ tz       <NA>                        
+ date     2018-03-07                  
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package              * version   date       source         
+ AnnotationDbi        * 1.32.3    2016-08-01 Bioconductor   
+ assertthat             0.2.0     2017-04-11 CRAN (R 3.2.3) 
+ Biobase              * 2.30.0    2016-08-01 Bioconductor   
+ BiocGenerics         * 0.16.1    2016-08-01 Bioconductor   
+ BiocParallel           1.4.3     2016-08-01 Bioconductor   
+ biomaRt              * 2.26.1    2017-02-09 Bioconductor   
+ Biostrings             2.38.4    2016-08-01 Bioconductor   
+ bit                    1.1-12    2014-04-09 CRAN (R 3.2.3) 
+ bit64                  0.9-7     2017-05-08 CRAN (R 3.2.3) 
+ bitops                 1.0-6     2013-08-17 CRAN (R 3.2.3) 
+ blob                   1.1.0     2017-06-17 CRAN (R 3.2.3) 
+ cli                    1.0.0     2017-11-05 CRAN (R 3.2.3) 
+ clisymbols             1.2.0     2017-05-21 CRAN (R 3.2.3) 
+ crayon                 1.3.4     2017-09-16 CRAN (R 3.2.3) 
+ DBI                    0.8       2018-03-02 CRAN (R 3.2.3) 
+ digest                 0.6.12    2017-01-27 CRAN (R 3.2.3) 
+ futile.logger          1.4.3     2016-07-10 CRAN (R 3.2.3) 
+ futile.options         1.0.0     2010-04-06 CRAN (R 3.2.3) 
+ GenomeInfoDb         * 1.6.3     2016-08-01 Bioconductor   
+ GenomicAlignments      1.6.3     2016-08-01 Bioconductor   
+ GenomicFeatures      * 1.22.13   2016-08-01 Bioconductor   
+ GenomicRanges        * 1.22.4    2018-02-02 Bioconductor   
+ hms                    0.4.1     2018-01-24 CRAN (R 3.2.3) 
+ IRanges              * 2.4.8     2016-08-01 Bioconductor   
+ lambda.r               1.2       2017-09-16 CRAN (R 3.2.3) 
+ magrittr             * 1.5       2014-11-22 CRAN (R 3.2.3) 
+ memoise                1.1.0     2017-04-21 CRAN (R 3.2.3) 
+ org.Hs.eg.db         * 3.2.3     2017-02-07 Bioconductor   
+ pillar                 1.2.1     2018-02-27 CRAN (R 3.2.3) 
+ pkgconfig              2.0.1     2017-03-21 CRAN (R 3.2.3) 
+ R6                     2.2.2     2017-06-17 CRAN (R 3.2.3) 
+ Rcpp                   0.12.15   2018-01-20 cran (@0.12.15)
+ RCurl                  1.95-4.10 2018-01-04 CRAN (R 3.2.3) 
+ readr                * 1.1.1     2017-05-16 CRAN (R 3.2.3) 
+ rlang                  0.2.0     2018-02-20 CRAN (R 3.2.3) 
+ Rsamtools              1.22.0    2016-08-01 Bioconductor   
+ RSQLite              * 2.0       2017-06-19 CRAN (R 3.2.3) 
+ rtracklayer            1.30.4    2016-08-01 Bioconductor   
+ S4Vectors            * 0.8.11    2016-08-01 Bioconductor   
+ sessioninfo          * 1.0.0     2017-06-21 CRAN (R 3.2.3) 
+ SummarizedExperiment   1.0.2     2016-08-01 Bioconductor   
+ tibble                 1.4.2     2018-01-22 CRAN (R 3.2.3) 
+ utf8                   1.1.3     2018-01-03 CRAN (R 3.2.3) 
+ withr                  2.1.1     2017-12-19 CRAN (R 3.2.3) 
+ XML                    3.98-1.10 2018-02-19 CRAN (R 3.2.3) 
+ XVector                0.10.0    2016-08-01 Bioconductor   
+ zlibbioc               1.16.0    2016-08-01 Bioconductor   
+> Sys.time()
+[1] "2018-03-07 17:49:47 EST"
+> proc.time()
+   user  system elapsed 
+745.163  64.987 213.341 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+745.164  64.987 213.342 

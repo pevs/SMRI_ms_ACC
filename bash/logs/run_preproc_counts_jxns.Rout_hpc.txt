@@ -1,0 +1,371 @@
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ### Preprocessing featureCounts results: jxns
+> ### Alexis Norris
+> ### Created: 2018-02-28 (Andrew Jaffe)
+> ### Modified: 2018-03-09
+> 
+> # Libraries -----------------------------------------------
+> library(plyr)
+> library(magrittr)
+> #library(tidyverse) # failed on cluster
+> library(readr)
+> library(GenomicRanges)
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, as.vector, cbind, colnames,
+    do.call, duplicated, eval, evalq, Filter, Find, get, grep, grepl,
+    intersect, is.unsorted, lapply, lengths, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unlist, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following object is masked from ‘package:plyr’:
+
+    rename
+
+Loading required package: IRanges
+
+Attaching package: ‘IRanges’
+
+The following object is masked from ‘package:plyr’:
+
+    desc
+
+Loading required package: GenomeInfoDb
+> library(GenomicFeatures)
+Loading required package: AnnotationDbi
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+> library(org.Hs.eg.db)
+
+> library(biomaRt)
+> 
+> # Load lieber_functions_ajr.R -------------------------------
+> # jaffelab pkg requires R >= 3.3.0, so needed to download that 
+> #library("devtools")
+> #install_github("LieberInstitute/jaffelab") 
+> #library("jaffelab")
+> ### Issues loading the library on cluster, because updated R won't configure because of zlib not being detected as updated (it should be in path though!)
+> ### So load the functions here instead
+> junctionCount <- function (junctionFiles, sampleNames = names(junctionFiles), 
++                            output = "Count", minOverhang = 0, strandSpecific = FALSE, 
++                            illuminaStranded = FALSE, minCount = 1, maxCores = 12) 
++ {
++   stopifnot(length(junctionFiles) == length(sampleNames))
++   names(junctionFiles) <- sampleNames
++   message(paste(Sys.time(), "reading in data"))
++   theData <- mclapply(junctionFiles, function(x) {
++     y <- read.delim(x, skip = 1, header = FALSE, sep = "\t",
++                     col.names = c("chr", "start", "end", "strand", "count"), 
++                     colClasses = c("character", "integer", "integer", "character", "integer"))
++ 
++     y <- y[y$count >= minCount, ]
++     weird <- which(y$strand == "?")
++     if (length(weird) > 0) y <- y[-weird, ]
++     
++     gr <- GRanges(y$chr,
++                   IRanges(y$start, y$end), 
++                   strand = y$strand, 
++                   count = y$count)
++     
++ 	return(gr)
++   }, mc.cores = maxCores)
++   
++ message(paste(Sys.time(), "creating master table of junctions"))
++   grList <- GRangesList(theData)
++   
++   if (illuminaStranded & strandSpecific) {
++     grList <- GRangesList(mclapply(grList, function(x) {
++       strand(x) = ifelse(strand(x) == "+", "-", "+")
++       return(x)
++     }, mc.cores = maxCores))
++   }
++   
++   fullGR <- unlist(grList)
++   
++   if (!strandSpecific)strand(fullGR) <- "*"
++   
++   fullGR <- fullGR[!duplicated(fullGR)]
++   fullGR <- sort(fullGR)
++   fullGR$count <- NULL
++   message(paste(Sys.time(), "there are", length(fullGR), "total junctions"))
++   message(paste(Sys.time(), "populating count matrix"))
++   jNames <- paste0(as.character(seqnames(fullGR)), ":", 
++                    start(fullGR), "-", end(fullGR), 
++                    "(", as.character(strand(fullGR)), ")")
++   options(warn = -1)
++   mList <- mclapply(grList, match, fullGR, 
++                     ignore.strand = !strandSpecific, 
++                     mc.cores = maxCores)
++   options(warn = 0)
++   countList <- mList
++   M <- length(jNames)
++   message(paste(Sys.time(), "filling in the count matrix"))
++   for (i in seq(along = grList)) {
++     if (i%%25 == 0) 
++       cat(".")
++     cc <- rep(0, M)
++     cc[mList[[i]]] <- theData[[i]]$count
++     countList[[i]] <- Rle(cc)
++   }
++   
++   countDF <- DataFrame(countList, row.names = jNames, check.names = FALSE)
++   names(fullGR) <- jNames
++   out <- list(countDF = countDF, anno = fullGR)
++   
++   return(out)
++ }
+> 
+> # IMPORTANT ---------------------------- ------------------
+> setwd("../hisat2_hg19/counts")
+> 
+> # Load results for genes, exons ---------------------------
+> #load("rawCounts_n20_genes_exons.rda") # geneMap, exonMap
+> # these are crap, use ones from gencode that I uploaded to references/hg19 directory
+> ### exon and gene maps from featureCounts that I used gencode maps to add gene info to
+> exonMap <- readRDS("/mnt/data/RNASeq/methods/references/hg19/ExonMap_Hsapiens.gencode.v19.GRCh37_with_eID.rds")
+> geneMap <- readRDS("/mnt/data/RNASeq/methods/references/hg19/GeneMap_Hsapiens.gencode.v19.GRCh37.rds")
+> 
+> # Load phenoData ------------------------------------------
+> pd <- read_tsv("featureCounts_phenoData.txt")
+Parsed with column specification:
+cols(
+  FileName = col_character(),
+  A_Code = col_character(),
+  totalMapped = col_integer()
+)
+> 
+> ### View
+> head(pd)
+# A tibble: 6 x 3
+  FileName           A_Code totalMapped
+  <chr>              <chr>        <int>
+1 S39_NoIndex_L006   A1       237169682
+2 S_170_NoIndex_L003 A10      194726219
+3 S451_NoIndex_L002  A100     306267596
+4 S452_NoIndex_L006  A101     256157615
+5 S456_NoIndex_L006  A102     228659501
+6 S468_NoIndex_L007  A103     391756411
+> 
+> ### Summary
+> summary(pd)
+   FileName            A_Code           totalMapped       
+ Length:100         Length:100         Min.   : 86027704  
+ Class :character   Class :character   1st Qu.:292508680  
+ Mode  :character   Mode  :character   Median :357910396  
+                                       Mean   :333350992  
+                                       3rd Qu.:389548108  
+                                       Max.   :420352851  
+> 
+> 
+> # Get jxn counts ------------------------------------------- 
+> ### Restrict to primary alignments
+> junctionFiles <- paste0(
++   	"jxns/", 
++ 	pd$FileName, 
++ 	"_jxns_primaryOnly_regtools.counts"
++ )
+> names(junctionFiles) <- pd$FileName
+> all(file.exists(junctionFiles)) #  TRUE
+[1] TRUE
+> table(file.exists(junctionFiles))
+
+TRUE 
+ 100 
+> 
+> juncCounts <- junctionCount(junctionFiles, pd$FileName, maxCores = 12)
+2018-03-09 21:00:42 reading in data
+2018-03-09 21:01:05 creating master table of junctions
+2018-03-09 21:01:23 there are 2223100 total junctions
+2018-03-09 21:01:23 populating count matrix
+2018-03-09 21:02:10 filling in the count matrix
+....> 
+> # Annotate junctions -----------------------------------------
+> ### Ensembl is close enough to gencode to use this to proceed
+> 
+> ### Load junctionMap (Granges object called "theJunctions") --> will reload this as jxnMap
+> #load("ensembl_hg19_v75_junction_annotation.rda") 
+> #saveRDS(theJunctions, "~/References/TranscriptomeMaps/ensembl_hg19_v75_junction_annotation.rds")
+> #saveRDS(theJunctions, "input/refs/ensembl_hg19_v75_junction_annotation.rds")
+> #jxnMap <- readRDS("input/refs/ensembl_hg19_v75_junction_annotation.rds")
+> jxnMap <- readRDS("/mnt/data/RNASeq/methods/references/hg19/ensembl_hg19_v75_junction_annotation.rds")
+> 
+> ### Get anno (genomic coordinates) of sample junctions
+> anno <- juncCounts$anno
+> 
+> ### Clean up their chromosome names
+> seqlevels(anno, force = TRUE) <- paste0("chr", c(1:22,"X","Y","M"))
+> 
+> ## add additional annotation
+> anno$inEnsembl <- countOverlaps(anno, jxnMap, type = "equal") > 0
+> anno$inEnsemblStart <- countOverlaps(anno, jxnMap, type = "start") > 0
+> anno$inEnsemblEnd <- countOverlaps(anno, jxnMap, type = "end") > 0
+> 
+> oo <- findOverlaps(anno, jxnMap, type = "equal")
+> anno$ensemblGeneID <- NA
+> anno$ensemblGeneID[queryHits(oo)] <- as.character(jxnMap$ensemblID[subjectHits(oo)])
+> anno$ensemblSymbol <- NA
+> anno$ensemblSymbol[queryHits(oo)] <- jxnMap$symbol[subjectHits(oo)]
+> anno$ensemblStrand <- NA
+> anno$ensemblStrand[queryHits(oo)] <- as.character(strand(jxnMap)[subjectHits(oo)])
+> anno$ensemblTx <- CharacterList(vector("list", length(anno)))
+> anno$ensemblTx[queryHits(oo)] <- jxnMap$tx[subjectHits(oo)]
+> anno$numTx <- elementLengths(anno$ensemblTx)
+> 
+> ### Clean up
+> anno$ensemblSymbol <- geneMap$Symbol[match(anno$ensemblGeneID, rownames(geneMap))]
+> 
+> ### Junction class (jaffe calls "jxn_class" "code" instead)
+> anno$jxn_class <- ifelse(anno$inEnsembl, "InEns", 
++ 	ifelse(anno$inEnsemblStart & anno$inEnsemblEnd, "ExonSkip",
++ 	ifelse(anno$inEnsemblStart | anno$inEnsemblEnd, "AltStartEnd", "Novel")))
+> 
+> ### b/w exons and junctions
+> head(exonMap)
+           pos_hg19           gene_id e_id feature_id           exon_id
+e1 chr1:11869-12227 ENSG00000223972.4   e1         e1 ENSE00002234944.1
+e2 chr1:12613-12721 ENSG00000223972.4   e2         e2 ENSE00003582793.1
+e3 chr1:13221-14409 ENSG00000223972.4   e3         e3 ENSE00002312635.1
+e4 chr1:11872-12227 ENSG00000223972.4   e4         e4 ENSE00002234632.1
+e6 chr1:13225-14412 ENSG00000223972.4   e6         e6 ENSE00002306041.1
+e7 chr1:11874-12227 ENSG00000223972.4   e7         e7 ENSE00002269724.1
+   exon_number gene_symbol feature_name  gene_type  chr start   end strand
+e1           1     DDX11L1      DDX11L1 pseudogene chr1 11869 12227      +
+e2           2     DDX11L1      DDX11L1 pseudogene chr1 12613 12721      +
+e3           3     DDX11L1      DDX11L1 pseudogene chr1 13221 14409      +
+e4           1     DDX11L1      DDX11L1 pseudogene chr1 11872 12227      +
+e6           3     DDX11L1      DDX11L1 pseudogene chr1 13225 14412      +
+e7           1     DDX11L1      DDX11L1 pseudogene chr1 11874 12227      +
+> exonGR <- GRanges(exonMap$chr,	IRanges(exonMap$start, exonMap$end))
+> anno$startExon <- match(
++   paste0(seqnames(anno), ":", start(anno) - 1), 
++ 	paste0(seqnames(exonGR), ":", end(exonGR))
++ )
+> anno$endExon <- match(
++   paste0(seqnames(anno), ":", end(anno) + 1),
++ 	paste0(seqnames(exonGR), ":", start(exonGR))
++ )
+> 
+> ### Get genes
+> g = data.frame(
++ 	leftGene = exonMap$gene_id[anno$startExon],
++ 	rightGene = exonMap$gene_id[anno$endExon],
++ 	leftGeneSym = exonMap$gene_symbol[anno$startExon],
++ 	rightGeneSym = exonMap$gene_symbol[anno$endExon],
++ 	stringsAsFactors = FALSE)
+> 
+> g$newGene = NA
+> g$newGeneSym = NA
+> g$newGene[which(g$leftGene==g$rightGene)] = 
++ 	g$leftGene[which(g$leftGene==g$rightGene)] 
+> g$newGeneSym[which(g$leftGene==g$rightGene)] = 
++ 	g$leftGeneSym[which(g$leftGene==g$rightGene)] 
+> g$newGene[which(g$leftGene!=g$rightGene)] = 
++ 	paste0(g$leftGene,"-",g$rightGene)[which(g$leftGene!=g$rightGene)] 
+> g$newGeneSym[which(g$leftGene!=g$rightGene)] = 
++ 	paste0(g$leftGeneSym,"-",g$rightGeneSym)[which(g$leftGene!=g$rightGene)] 
+> g$newGene[which(is.na(g$newGene) & is.na(g$leftGene))] = 
++ 	g$rightGene[which(is.na(g$newGene) & is.na(g$leftGene))] 
+> g$newGene[which(is.na(g$newGene) & is.na(g$rightGene))] = 
++ 	g$leftGene[which(is.na(g$newGene) & is.na(g$rightGene))] 
+> g$newGeneSym[which(is.na(g$newGeneSym) & is.na(g$leftGene))] = 
++ 	g$rightGeneSym[which(is.na(g$newGeneSym) & is.na(g$leftGene))] 
+> g$newGeneSym[which(is.na(g$newGeneSym) & is.na(g$rightGene))] = 
++ 	g$leftGeneSym[which(is.na(g$newGeneSym) & is.na(g$rightGene))] 
+> g$newGeneSym[g$newGeneSym==""] = NA
+> g$newGeneSym[g$newGeneSym=="-"] = NA
+> anno$newGeneID = g$newGene
+> anno$newGeneSymbol = g$newGeneSym
+> anno$isFusion = grepl("-", anno$newGeneID)
+> 
+> ### Extract out
+> jMap <- anno
+> jCounts <- juncCounts$countDF
+> jCounts <- as.data.frame(jCounts[names(jMap), pd$FileName])
+> 
+> ### Reduce
+> mappedPer80M <- pd$totalMapped/80e6 # normalizes to 80M libsize
+> countsM <- DataFrame(mapply(function(x,d) x/d, jCounts, mappedPer80M))
+> rownames(jCounts) = rownames(countsM) = names(jMap)
+> jRpkm <- as.data.frame(countsM)
+> 
+> ### Get sequence of acceptor/donor sites
+> library(BSgenome.Hsapiens.UCSC.hg19)
+Loading required package: BSgenome
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: ‘XVector’
+
+The following object is masked from ‘package:plyr’:
+
+    compact
+
+Loading required package: rtracklayer
+> library(GenomicRanges)
+> left = right = jMap
+> end(left) <- start(left)+1
+> start(right) <- end(right)-1
+> 
+> jMap$leftSeq <- getSeq(Hsapiens, left)
+> jMap$rightSeq <- getSeq(Hsapiens, right)
+> 
+> ### save counts
+> save(jMap, jCounts, pd,
++      compress = TRUE,
++      file = "rawCounts_n20_jxns_hpc.rda")
+> save(jMap, jRpkm, pd,
++      compress = TRUE,
++      file = "rpkmCounts_n20_jxns_hpc.rda")
+> 
+> ### Print time
+> Sys.time()
+[1] "2018-03-09 21:17:08 EST"
+> 
+> 
+> proc.time()
+    user   system  elapsed 
+ 873.171  558.753 1016.578 

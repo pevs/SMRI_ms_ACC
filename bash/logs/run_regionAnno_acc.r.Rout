@@ -1,0 +1,270 @@
+WARNING: unknown option '--max-mem-size=375G'
+
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #!/usr/bin/env r
+> 
+> ### Annotate derfinder regions on cluster
+> ### Alexis Norris
+> ### Created: 2018-03-12
+> ### Modified: 16 March 2018 (PFC -> ACC)
+> 
+> ### Libraries
+> library(derfinder)
+> library(GenomicRanges)
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, as.vector, cbind, colnames,
+    do.call, duplicated, eval, evalq, Filter, Find, get, grep, grepl,
+    intersect, is.unsorted, lapply, lengths, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unlist, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+> library(magrittr)
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:GenomicRanges’:
+
+    intersect, setdiff, union
+
+The following object is masked from ‘package:GenomeInfoDb’:
+
+    intersect
+
+The following objects are masked from ‘package:IRanges’:
+
+    collapse, desc, intersect, setdiff, slice, union
+
+The following objects are masked from ‘package:S4Vectors’:
+
+    intersect, rename, setdiff, union
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    combine, intersect, setdiff, union
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> 
+> ### Dir paths
+> REFS <- "/mnt/data/RNASeq/methods/references/hg19/"
+> brain_region <- "ACC"
+> 
+> ### Load regions
+> Sys.time()
+[1] "2018-03-16 11:04:00 EDT"
+> regionMat <- readRDS("regionMat_ACC_75bp.rds")
+> Sys.time()
+[1] "2018-03-16 11:05:37 EDT"
+> 
+> ### Extract regions from GRanges object 
+> regions <- unlist(GRangesList(lapply(regionMat, "[[", "regions")))
+> names(regions) <- paste0(seqnames(regions), ":", 
++                          start(regions), "-", 
++                          end(regions)) 
+> 
+> ### GeneMap: Check regions for overlapping genes
+> geneMap <- readRDS(paste0(REFS, "GeneMap_Hsapiens.gencode.v19.GRCh37.rds"))
+> geneMapGR <- GenomicRanges::makeGRangesFromDataFrame(
++   geneMap, 
++   keep.extra.columns = TRUE
++ )
+> rm(geneMap)
+> 
+> Sys.time()
+[1] "2018-03-16 11:05:38 EDT"
+> dA <- GenomicRanges::distanceToNearest(regions, geneMapGR)
+> Sys.time()
+[1] "2018-03-16 11:05:38 EDT"
+> regions$feature_name <- geneMapGR$gene_symbol[subjectHits(dA)]
+> regions$gene_symbol<- geneMapGR$gene_symbol[subjectHits(dA)]
+> regions$gene_type <- geneMapGR$gene_type[subjectHits(dA)]
+> regions$gene_id <- geneMapGR$gene_id[subjectHits(dA)]
+> regions$distToGene <- mcols(dA)$distance
+> 
+> ### GenomicState: Count number of region anno types
+> gs <- readRDS(paste0(REFS, "GenomicState_Hsapiens.gencode.v19.GRCh37.p13.rds"))
+> ensemblAnno <- derfinder::annotateRegions(regions, gs$fullGenome)
+2018-03-16 11:05:42 annotateRegions: counting
+2018-03-16 11:05:43 annotateRegions: annotating
+> colSums(ensemblAnno$countTable)
+      exon intergenic     intron 
+    158194       5469      30780 
+> mcols(regions) <- cbind(mcols(regions), ensemblAnno$countTable)
+> regions$anno_class <- NA
+> regions$anno_class[regions$exon > 0 & 
++                      regions$intron == 0 & 
++                      regions$intergenic == 0] = "strictExonic"
+> regions$anno_class[regions$exon == 0 & 
++                      regions$intron > 0 & 
++                      regions$intergenic == 0] = "strictIntronic"
+> regions$anno_class[regions$exon == 0 & 
++                      regions$intron == 0 & 
++                      regions$intergenic > 0] = "strictIntergenic"
+> regions$anno_class[regions$exon > 0 & 
++                      regions$intron > 0 & 
++                      regions$intergenic == 0] = "exonIntron"
+> regions$anno_class[regions$exon > 0 & 
++                      regions$intergenic > 0] = "extendUTR"
+> summary(factor(regions$anno_class))
+      exonIntron        extendUTR     strictExonic strictIntergenic 
+           14598              272           138129             5181 
+  strictIntronic 
+           14471 
+> 
+> ### Save bed
+> rtracklayer::export(regions, 
++                     paste0("derfinder_", brain_region, "_ERs.bed"))
+> 
+> ### Extract featureData (annotation) from granges object
+> class(regions)
+[1] "GRanges"
+attr(,"package")
+[1] "GenomicRanges"
+> head(regions)
+GRanges object with 6 ranges and 15 metadata columns:
+                   seqnames         ranges strand |     value       area
+                      <Rle>      <IRanges>  <Rle> | <numeric>  <numeric>
+  chr1:14403-14829     chr1 [14403, 14829]      * | 18.869251 8057.17037
+  chr1:14970-15038     chr1 [14970, 15038]      * | 13.695437  944.98519
+  chr1:15796-15814     chr1 [15796, 15814]      * |  9.334893  177.36296
+  chr1:16884-17055     chr1 [16884, 17055]      * | 21.827778 3754.37778
+  chr1:17233-17394     chr1 [17233, 17394]      * | 21.763923 3525.75556
+  chr1:17475-17484     chr1 [17475, 17484]      * |  5.166667   51.66667
+                   indexStart  indexEnd cluster clusterL feature_name
+                    <integer> <integer>   <Rle>    <Rle>     <factor>
+  chr1:14403-14829          1       427       1      636      DDX11L1
+  chr1:14970-15038        428       496       1      636       WASH7P
+  chr1:15796-15814        497       515       2       19       WASH7P
+  chr1:16884-17055        516       687       3     1483       WASH7P
+  chr1:17233-17394        688       849       3     1483       WASH7P
+  chr1:17475-17484        850       859       3     1483       WASH7P
+                   gene_symbol  gene_type           gene_id distToGene
+                      <factor>   <factor>          <factor>  <integer>
+  chr1:14403-14829     DDX11L1 pseudogene ENSG00000223972.4          0
+  chr1:14970-15038      WASH7P pseudogene ENSG00000227232.4          0
+  chr1:15796-15814      WASH7P pseudogene ENSG00000227232.4          0
+  chr1:16884-17055      WASH7P pseudogene ENSG00000227232.4          0
+  chr1:17233-17394      WASH7P pseudogene ENSG00000227232.4          0
+  chr1:17475-17484      WASH7P pseudogene ENSG00000227232.4          0
+                        exon intergenic    intron     anno_class
+                   <integer>  <integer> <integer>    <character>
+  chr1:14403-14829         2          0         0   strictExonic
+  chr1:14970-15038         1          0         0   strictExonic
+  chr1:15796-15814         1          0         0   strictExonic
+  chr1:16884-17055         1          0         0   strictExonic
+  chr1:17233-17394         1          0         1     exonIntron
+  chr1:17475-17484         0          0         1 strictIntronic
+  -------
+  seqinfo: 25 sequences from an unspecified genome
+> head(as.data.frame(regions))
+                 seqnames start   end width strand     value       area
+chr1:14403-14829     chr1 14403 14829   427      * 18.869251 8057.17037
+chr1:14970-15038     chr1 14970 15038    69      * 13.695437  944.98519
+chr1:15796-15814     chr1 15796 15814    19      *  9.334893  177.36296
+chr1:16884-17055     chr1 16884 17055   172      * 21.827778 3754.37778
+chr1:17233-17394     chr1 17233 17394   162      * 21.763923 3525.75556
+chr1:17475-17484     chr1 17475 17484    10      *  5.166667   51.66667
+                 indexStart indexEnd cluster clusterL feature_name gene_symbol
+chr1:14403-14829          1      427       1      636      DDX11L1     DDX11L1
+chr1:14970-15038        428      496       1      636       WASH7P      WASH7P
+chr1:15796-15814        497      515       2       19       WASH7P      WASH7P
+chr1:16884-17055        516      687       3     1483       WASH7P      WASH7P
+chr1:17233-17394        688      849       3     1483       WASH7P      WASH7P
+chr1:17475-17484        850      859       3     1483       WASH7P      WASH7P
+                  gene_type           gene_id distToGene exon intergenic intron
+chr1:14403-14829 pseudogene ENSG00000223972.4          0    2          0      0
+chr1:14970-15038 pseudogene ENSG00000227232.4          0    1          0      0
+chr1:15796-15814 pseudogene ENSG00000227232.4          0    1          0      0
+chr1:16884-17055 pseudogene ENSG00000227232.4          0    1          0      0
+chr1:17233-17394 pseudogene ENSG00000227232.4          0    1          0      1
+chr1:17475-17484 pseudogene ENSG00000227232.4          0    0          0      1
+                     anno_class
+chr1:14403-14829   strictExonic
+chr1:14970-15038   strictExonic
+chr1:15796-15814   strictExonic
+chr1:16884-17055   strictExonic
+chr1:17233-17394     exonIntron
+chr1:17475-17484 strictIntronic
+> 
+> features <- as.data.frame(regions) %>%
++   mutate(chr = seqnames) %>%
++   mutate(pos_hg19 = paste0(chr, ":", start, "-", end),
++          feature_id = paste0(chr, ":", start, "-", end)) %>% 
++   select(feature_id, feature_name, 
++          pos_hg19, chr, start, end, strand, 
++          gene_symbol, gene_type, gene_id, 
++          distToGene, anno_class)
+> 
+> ### Summarise strand
+> summary(factor(features$strand))
+     * 
+172651 
+> 
+> ### feature_id = Region (chr_:_-_) = pos_hg19 = rownames
+> features <- as.data.frame(features)
+> rownames(features) <- features$feature_id
+> 
+> ### Save
+> Sys.time()
+[1] "2018-03-16 11:05:44 EDT"
+> saveRDS(features, paste0("features_", brain_region, "_regions.rds")) 
+> 
+> ### Done
+> Sys.time()
+[1] "2018-03-16 11:05:45 EDT"
+> 
+> 
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+566.463  35.220 602.005 

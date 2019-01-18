@@ -1,0 +1,431 @@
+WARNING: unknown option '--max-mem-size=375G'
+
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #!/usr/bin/env r
+> 
+> ### Alexis Norris
+> ### created: 1 August 2016
+> ### modified: 3 March 2018 *for PEC/PFC, which needs ALOT more threads*
+> 
+> print(Sys.time())
+[1] "2018-03-10 19:38:27 EST"
+> library(derfinder)
+> 
+> ### Generate full coverage
+> # Load chromosome information used in assembly
+> chrom.sizes <- read.delim("/mnt/data/RNASeq/methods/references/hg19/hg19.chrom.sizes", header = FALSE)
+> print(head(chrom.sizes))
+    V1        V2
+1 chr1 249250621
+2 chr2 243199373
+3 chr3 198022430
+4 chr4 191154276
+5 chr5 180915260
+6 chr6 171115067
+> 
+> # Remove unmapped contigs
+> chrom.sizes <- chrom.sizes[-grep("_", chrom.sizes$V1), ]
+> 
+> 
+> # ACC (75bp) ------------------------------------------
+> # Locate bigwig files
+> # .bai files must also be in the directory and have identical names
+> #files_ACC <- rawFiles("/mnt/data/RNASeq/data/Stanley/all_hisat_hg19/derfinder/bigwigs/ACC", samplepatt = "bw", fileterm = NULL)
+> #names(files_ACC) <- gsub(".bw", "", names(files_ACC))
+> 
+> # Load full coverage from bigwig files
+> #fullCov_ACC <- fullCoverage(files = files_ACC, chrs = as.character(chrom.sizes$V1), chrlens = chrom.sizes$V2, verbose = TRUE, mc.cores.load = 10)
+> #saveRDS(fullCov_ACC, "fullCov_ACC.rds")
+> 
+> ### Filter coverage to reduce computational time of `regionMatrix`
+> # Using mean coverage of 5 reads (mean across all samples), for a region to be included as an expressed region  
+> #filteredCov_ACC <- lapply(fullCov_ACC, filterData, returnMean = TRUE, filter = "mean", cutoff = 5, verbose = TRUE)
+> #saveRDS(filteredCov_ACC, "filteredCov_ACC.rds")
+> 
+> ### Calculate expressed region counts  
+> # L = read length (here, 75bp)
+> #regionMat75_ACC <- regionMatrix(filteredCov_ACC, L = 75, runFilter = FALSE, verbose = TRUE)
+> #saveRDS(regionMat75_ACC, "regionMat_ACC_75bp.rds")
+> #rm(fullCov_ACC)
+> #rm(filteredCov_ACC)
+> #rm(regionMat75_ACC)
+> 
+> # HPC (100bp) ------------------------------------------
+> # Locate bigwig files
+> # .bai files must also be in the directory and have identical names
+> #files_HPC <- rawFiles("/mnt/data/RNASeq/data/Stanley/all_hisat_hg19/derfinder/bigwigs/HPC", samplepatt = "bw", fileterm = NULL)
+> #names(files_HPC) <- gsub(".bw", "", names(files_HPC))
+> 
+> # Load full coverage from bigwig files
+> #fullCov_HPC <- fullCoverage(files = files_HPC, chrs = as.character(chrom.sizes$V1), chrlens = chrom.sizes$V2, verbose = TRUE, mc.cores.load = 10)
+> #saveRDS(fullCov_HPC, "fullCov_HPC.rds")
+> 
+> ### Filter coverage to reduce computational time of `regionMatrix`
+> # Using mean coverage of 5 reads (mean across all samples), for a region to be included as an expressed region  
+> #filteredCov_HPC <- lapply(fullCov_HPC, filterData, returnMean = TRUE, filter = "mean", cutoff = 5, verbose = TRUE)
+> #saveRDS(filteredCov_HPC, "filteredCov_HPC.rds")
+> 
+> ### Calculate expressed region counts  
+> # L = read length (here, 100bp)
+> #regionMat100_HPC <- regionMatrix(filteredCov_HPC, L = 100, runFilter = FALSE, verbose = TRUE)
+> #saveRDS(regionMat100_HPC, "regionMat_HPC_100bp.rds")
+> #rm(fullCov_HPC)
+> #rm(filteredCov_HPC)
+> #rm(regionMat100_HPC)
+> 
+> 
+> Sys.time()
+[1] "2018-03-10 19:38:40 EST"
+> # PEC (100bp) ------------------------------------------
+> # Locate bigwig files
+> # .bai files must also be in the directory and have identical names
+> #files_PFC <- rawFiles("PFC", samplepatt = "bw", fileterm = NULL)
+> #pheno <- read.delim("featureCounts_phenoData.txt", sep = "\t")
+> #files_PFC <- paste0("PFC/", as.character(pheno$FileName), ".bw")
+> #names(files_PFC) <- as.character(pheno$FileName)
+> 
+> # Load full coverage from bigwig files
+> #fullCov_PFC <- fullCoverage(files = files_PFC, chrs = as.character(chrom.sizes$V1), chrlens = chrom.sizes$V2, verbose = TRUE, mc.cores.load = 10)
+> #saveRDS(fullCov_PFC, file = "fullCov_PFC.rds")
+> 
+> ### Filter coverage to reduce computational time of `regionMatrix`
+> # Using mean coverage of 5 reads (mean across all samples), for a region to be included as an expressed region
+>  # should check order same, so pheno$totalMapped in correct order!  
+> #filteredCov_PFC <- lapply(fullCov_PFC, filterData, 
+> #			returnMean = TRUE, filter = "mean", cutoff = 5, 
+> #			#totalMapped = pheno$totalMapped, targetSize = 8e+07 #80M libsize
+> #			verbose = TRUE)
+> #saveRDS(filteredCov_PFC, file = "filteredCov_PFC.rds")
+> filteredCov_PFC <- readRDS("filteredCov_PFC.rds")
+> 
+> ### Calculate expressed region counts  
+> # L = read length (here, 100bp)
+> regionMat100_PFC <- regionMatrix(filteredCov_PFC, L = 100, runFilter = FALSE, returnBP = FALSE, verbose = TRUE)
+2018-03-10 19:44:05 regionMatrix: processing chr1
+2018-03-10 19:44:05 findRegions: identifying potential segments
+2018-03-10 19:44:05 findRegions: segmenting F-stats information
+2018-03-10 19:44:05 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-10 19:44:13 findRegions: identifying candidate regions
+2018-03-10 19:44:13 findRegions: identifying region clusters
+2018-03-10 19:44:56 getRegionCoverage: processing chr1
+2018-03-10 22:35:47 getRegionCoverage: done processing chr1
+2018-03-10 22:39:05 regionMatrix: processing chr2
+2018-03-10 22:39:05 findRegions: identifying potential segments
+2018-03-10 22:39:05 findRegions: segmenting F-stats information
+2018-03-10 22:39:05 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-10 22:39:12 findRegions: identifying candidate regions
+2018-03-10 22:39:13 findRegions: identifying region clusters
+2018-03-10 22:40:01 getRegionCoverage: processing chr2
+2018-03-11 00:52:37 getRegionCoverage: done processing chr2
+2018-03-11 00:57:11 regionMatrix: processing chr3
+2018-03-11 00:57:11 findRegions: identifying potential segments
+2018-03-11 00:57:11 findRegions: segmenting F-stats information
+2018-03-11 00:57:11 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 00:57:17 findRegions: identifying candidate regions
+2018-03-11 00:57:18 findRegions: identifying region clusters
+2018-03-11 00:57:55 getRegionCoverage: processing chr3
+2018-03-11 03:39:06 getRegionCoverage: done processing chr3
+2018-03-11 03:42:59 regionMatrix: processing chr4
+2018-03-11 03:42:59 findRegions: identifying potential segments
+2018-03-11 03:42:59 findRegions: segmenting F-stats information
+2018-03-11 03:42:59 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 03:43:03 findRegions: identifying candidate regions
+2018-03-11 03:43:04 findRegions: identifying region clusters
+2018-03-11 03:43:28 getRegionCoverage: processing chr4
+2018-03-11 04:26:17 getRegionCoverage: done processing chr4
+2018-03-11 04:28:50 regionMatrix: processing chr5
+2018-03-11 04:28:50 findRegions: identifying potential segments
+2018-03-11 04:28:50 findRegions: segmenting F-stats information
+2018-03-11 04:28:50 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 04:28:55 findRegions: identifying candidate regions
+2018-03-11 04:28:56 findRegions: identifying region clusters
+2018-03-11 04:29:28 getRegionCoverage: processing chr5
+2018-03-11 05:36:16 getRegionCoverage: done processing chr5
+2018-03-11 05:39:12 regionMatrix: processing chr6
+2018-03-11 05:39:12 findRegions: identifying potential segments
+2018-03-11 05:39:12 findRegions: segmenting F-stats information
+2018-03-11 05:39:12 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 05:39:16 findRegions: identifying candidate regions
+2018-03-11 05:39:17 findRegions: identifying region clusters
+2018-03-11 05:39:46 getRegionCoverage: processing chr6
+2018-03-11 06:35:10 getRegionCoverage: done processing chr6
+2018-03-11 06:38:00 regionMatrix: processing chr7
+2018-03-11 06:38:00 findRegions: identifying potential segments
+2018-03-11 06:38:00 findRegions: segmenting F-stats information
+2018-03-11 06:38:00 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 06:38:04 findRegions: identifying candidate regions
+2018-03-11 06:38:05 findRegions: identifying region clusters
+2018-03-11 06:38:39 getRegionCoverage: processing chr7
+2018-03-11 07:49:16 getRegionCoverage: done processing chr7
+2018-03-11 07:52:33 regionMatrix: processing chrX
+2018-03-11 07:52:33 findRegions: identifying potential segments
+2018-03-11 07:52:33 findRegions: segmenting F-stats information
+2018-03-11 07:52:33 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 07:52:34 findRegions: identifying candidate regions
+2018-03-11 07:52:35 findRegions: identifying region clusters
+2018-03-11 07:52:49 getRegionCoverage: processing chrX
+2018-03-11 08:03:24 getRegionCoverage: done processing chrX
+2018-03-11 08:04:22 regionMatrix: processing chr8
+2018-03-11 08:04:22 findRegions: identifying potential segments
+2018-03-11 08:04:22 findRegions: segmenting F-stats information
+2018-03-11 08:04:22 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 08:04:26 findRegions: identifying candidate regions
+2018-03-11 08:04:27 findRegions: identifying region clusters
+2018-03-11 08:04:52 getRegionCoverage: processing chr8
+2018-03-11 08:51:06 getRegionCoverage: done processing chr8
+2018-03-11 08:53:33 regionMatrix: processing chr9
+2018-03-11 08:53:33 findRegions: identifying potential segments
+2018-03-11 08:53:33 findRegions: segmenting F-stats information
+2018-03-11 08:53:33 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 08:53:36 findRegions: identifying candidate regions
+2018-03-11 08:53:37 findRegions: identifying region clusters
+2018-03-11 08:54:04 getRegionCoverage: processing chr9
+2018-03-11 09:41:23 getRegionCoverage: done processing chr9
+2018-03-11 09:43:46 regionMatrix: processing chr10
+2018-03-11 09:43:46 findRegions: identifying potential segments
+2018-03-11 09:43:46 findRegions: segmenting F-stats information
+2018-03-11 09:43:46 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 09:43:49 findRegions: identifying candidate regions
+2018-03-11 09:43:50 findRegions: identifying region clusters
+2018-03-11 09:44:18 getRegionCoverage: processing chr10
+2018-03-11 10:36:19 getRegionCoverage: done processing chr10
+2018-03-11 10:38:50 regionMatrix: processing chr11
+2018-03-11 10:38:50 findRegions: identifying potential segments
+2018-03-11 10:38:50 findRegions: segmenting F-stats information
+2018-03-11 10:38:50 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 10:38:54 findRegions: identifying candidate regions
+2018-03-11 10:38:54 findRegions: identifying region clusters
+2018-03-11 10:39:21 getRegionCoverage: processing chr11
+2018-03-11 11:29:03 getRegionCoverage: done processing chr11
+2018-03-11 11:31:28 regionMatrix: processing chr12
+2018-03-11 11:31:28 findRegions: identifying potential segments
+2018-03-11 11:31:28 findRegions: segmenting F-stats information
+2018-03-11 11:31:28 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 11:31:31 findRegions: identifying candidate regions
+2018-03-11 11:31:32 findRegions: identifying region clusters
+2018-03-11 11:32:01 getRegionCoverage: processing chr12
+2018-03-11 12:26:15 getRegionCoverage: done processing chr12
+2018-03-11 12:28:54 regionMatrix: processing chr13
+2018-03-11 12:28:54 findRegions: identifying potential segments
+2018-03-11 12:28:54 findRegions: segmenting F-stats information
+2018-03-11 12:28:54 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 12:28:56 findRegions: identifying candidate regions
+2018-03-11 12:28:57 findRegions: identifying region clusters
+2018-03-11 12:29:10 getRegionCoverage: processing chr13
+2018-03-11 12:42:13 getRegionCoverage: done processing chr13
+2018-03-11 12:43:29 regionMatrix: processing chr14
+2018-03-11 12:43:29 findRegions: identifying potential segments
+2018-03-11 12:43:29 findRegions: segmenting F-stats information
+2018-03-11 12:43:29 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 12:43:31 findRegions: identifying candidate regions
+2018-03-11 12:43:31 findRegions: identifying region clusters
+2018-03-11 12:43:51 getRegionCoverage: processing chr14
+2018-03-11 13:09:51 getRegionCoverage: done processing chr14
+2018-03-11 13:11:29 regionMatrix: processing chr15
+2018-03-11 13:11:29 findRegions: identifying potential segments
+2018-03-11 13:11:29 findRegions: segmenting F-stats information
+2018-03-11 13:11:29 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 13:11:31 findRegions: identifying candidate regions
+2018-03-11 13:11:31 findRegions: identifying region clusters
+2018-03-11 13:11:55 getRegionCoverage: processing chr15
+2018-03-11 13:35:30 getRegionCoverage: done processing chr15
+2018-03-11 13:37:13 regionMatrix: processing chr16
+2018-03-11 13:37:13 findRegions: identifying potential segments
+2018-03-11 13:37:13 findRegions: segmenting F-stats information
+2018-03-11 13:37:13 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 13:37:15 findRegions: identifying candidate regions
+2018-03-11 13:37:15 findRegions: identifying region clusters
+2018-03-11 13:37:33 getRegionCoverage: processing chr16
+2018-03-11 13:54:44 getRegionCoverage: done processing chr16
+2018-03-11 13:56:03 regionMatrix: processing chr17
+2018-03-11 13:56:03 findRegions: identifying potential segments
+2018-03-11 13:56:03 findRegions: segmenting F-stats information
+2018-03-11 13:56:03 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 13:56:05 findRegions: identifying candidate regions
+2018-03-11 13:56:05 findRegions: identifying region clusters
+2018-03-11 13:56:32 getRegionCoverage: processing chr17
+2018-03-11 14:22:01 getRegionCoverage: done processing chr17
+2018-03-11 14:23:47 regionMatrix: processing chr18
+2018-03-11 14:23:47 findRegions: identifying potential segments
+2018-03-11 14:23:47 findRegions: segmenting F-stats information
+2018-03-11 14:23:47 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 14:23:48 findRegions: identifying candidate regions
+2018-03-11 14:23:48 findRegions: identifying region clusters
+2018-03-11 14:24:00 getRegionCoverage: processing chr18
+2018-03-11 14:28:59 getRegionCoverage: done processing chr18
+2018-03-11 14:29:56 regionMatrix: processing chr20
+2018-03-11 14:29:56 findRegions: identifying potential segments
+2018-03-11 14:29:56 findRegions: segmenting F-stats information
+2018-03-11 14:29:56 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 14:29:57 findRegions: identifying candidate regions
+2018-03-11 14:29:57 findRegions: identifying region clusters
+2018-03-11 14:30:08 getRegionCoverage: processing chr20
+2018-03-11 14:33:57 getRegionCoverage: done processing chr20
+2018-03-11 14:34:43 regionMatrix: processing chrY
+2018-03-11 14:34:43 findRegions: identifying potential segments
+2018-03-11 14:34:43 findRegions: segmenting F-stats information
+2018-03-11 14:34:43 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 14:34:43 findRegions: identifying candidate regions
+2018-03-11 14:34:43 findRegions: identifying region clusters
+2018-03-11 14:34:45 getRegionCoverage: processing chrY
+2018-03-11 14:35:02 getRegionCoverage: done processing chrY
+2018-03-11 14:35:08 regionMatrix: processing chr19
+2018-03-11 14:35:08 findRegions: identifying potential segments
+2018-03-11 14:35:08 findRegions: segmenting F-stats information
+2018-03-11 14:35:08 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 14:35:09 findRegions: identifying candidate regions
+2018-03-11 14:35:09 findRegions: identifying region clusters
+2018-03-11 14:35:26 getRegionCoverage: processing chr19
+2018-03-11 14:39:19 getRegionCoverage: done processing chr19
+2018-03-11 14:40:10 regionMatrix: processing chr22
+2018-03-11 14:40:10 findRegions: identifying potential segments
+2018-03-11 14:40:10 findRegions: segmenting F-stats information
+2018-03-11 14:40:10 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 14:40:11 findRegions: identifying candidate regions
+2018-03-11 14:40:11 findRegions: identifying region clusters
+2018-03-11 14:40:23 getRegionCoverage: processing chr22
+2018-03-11 14:42:47 getRegionCoverage: done processing chr22
+2018-03-11 14:43:23 regionMatrix: processing chr21
+2018-03-11 14:43:23 findRegions: identifying potential segments
+2018-03-11 14:43:23 findRegions: segmenting F-stats information
+2018-03-11 14:43:23 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 14:43:24 findRegions: identifying candidate regions
+2018-03-11 14:43:24 findRegions: identifying region clusters
+2018-03-11 14:43:29 getRegionCoverage: processing chr21
+2018-03-11 14:44:43 getRegionCoverage: done processing chr21
+2018-03-11 14:45:10 regionMatrix: processing chrM
+2018-03-11 14:45:10 findRegions: identifying potential segments
+2018-03-11 14:45:10 findRegions: segmenting F-stats information
+2018-03-11 14:45:10 .getSegmentsRle: segmenting with cutoff(s) 0
+2018-03-11 14:45:10 findRegions: identifying candidate regions
+2018-03-11 14:45:10 findRegions: identifying region clusters
+2018-03-11 14:45:10 getRegionCoverage: processing chrM
+2018-03-11 14:45:10 getRegionCoverage: done processing chrM
+> saveRDS(regionMat100_PFC, file = "regionMat_PFC_100bp.rds")
+> 
+> #rm(fullCov_PFC)
+> #rm(filteredCov_PFC)
+> #rm(regionMat100_PFC)
+> 
+> library(sessioninfo)
+> sessioninfo::session_info()
+─ Session info ───────────────────────────────────────────────────────────────
+ setting  value                       
+ version  R version 3.2.3 (2015-12-10)
+ os       CentOS release 6.5 (Final)  
+ system   x86_64, linux-gnu           
+ ui       X11                         
+ language (EN)                        
+ collate  en_US.UTF-8                 
+ tz       <NA>                        
+ date     2018-03-11                  
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package              * version   date       source         
+ acepack                1.4.1     2016-10-29 CRAN (R 3.2.3) 
+ AnnotationDbi          1.32.3    2016-08-01 Bioconductor   
+ Biobase                2.30.0    2016-08-01 Bioconductor   
+ BiocGenerics           0.16.1    2016-08-01 Bioconductor   
+ BiocParallel           1.4.3     2016-08-01 Bioconductor   
+ biomaRt                2.26.1    2017-02-09 Bioconductor   
+ Biostrings             2.38.4    2016-08-01 Bioconductor   
+ bit                    1.1-12    2014-04-09 CRAN (R 3.2.3) 
+ bit64                  0.9-7     2017-05-08 CRAN (R 3.2.3) 
+ bitops                 1.0-6     2013-08-17 CRAN (R 3.2.3) 
+ blob                   1.1.0     2017-06-17 CRAN (R 3.2.3) 
+ bumphunter             1.10.0    2016-08-01 Bioconductor   
+ clisymbols             1.2.0     2017-05-21 CRAN (R 3.2.3) 
+ cluster                2.0.3     2015-07-21 CRAN (R 3.2.3) 
+ codetools              0.2-15    2016-10-05 CRAN (R 3.2.3) 
+ colorspace             1.3-2     2016-12-14 CRAN (R 3.2.3) 
+ data.table             1.10.4-3  2017-10-27 CRAN (R 3.2.3) 
+ DBI                    0.8       2018-03-02 CRAN (R 3.2.3) 
+ derfinder            * 1.4.4     2018-03-03 Bioconductor   
+ derfinderHelper        1.4.1     2016-08-01 Bioconductor   
+ digest                 0.6.12    2017-01-27 CRAN (R 3.2.3) 
+ doRNG                  1.6.6     2017-04-10 CRAN (R 3.2.3) 
+ foreach                1.4.4     2017-12-12 CRAN (R 3.2.3) 
+ foreign                0.8-69    2017-06-21 CRAN (R 3.2.3) 
+ Formula                1.2-2     2017-07-10 CRAN (R 3.2.3) 
+ futile.logger          1.4.3     2016-07-10 CRAN (R 3.2.3) 
+ futile.options         1.0.0     2010-04-06 CRAN (R 3.2.3) 
+ GenomeInfoDb           1.6.3     2016-08-01 Bioconductor   
+ GenomicAlignments      1.6.3     2016-08-01 Bioconductor   
+ GenomicFeatures        1.22.13   2016-08-01 Bioconductor   
+ GenomicFiles           1.6.2     2016-08-01 Bioconductor   
+ GenomicRanges          1.22.4    2018-02-02 Bioconductor   
+ ggplot2                2.2.1     2016-12-30 CRAN (R 3.2.3) 
+ gridExtra              2.3       2017-09-09 CRAN (R 3.2.3) 
+ gtable                 0.2.0     2016-02-26 CRAN (R 3.2.3) 
+ Hmisc                  3.17-4    2016-05-02 CRAN (R 3.2.3) 
+ IRanges                2.4.8     2016-08-01 Bioconductor   
+ iterators              1.0.9     2017-12-12 CRAN (R 3.2.3) 
+ lambda.r               1.2       2017-09-16 CRAN (R 3.2.3) 
+ lattice                0.20-35   2017-03-25 CRAN (R 3.2.3) 
+ latticeExtra           0.6-28    2016-02-09 CRAN (R 3.2.3) 
+ lazyeval               0.2.1     2017-10-29 CRAN (R 3.2.3) 
+ locfit                 1.5-9.1   2013-04-20 CRAN (R 3.2.3) 
+ magrittr               1.5       2014-11-22 CRAN (R 3.2.3) 
+ Matrix                 1.2-3     2015-11-28 CRAN (R 3.2.3) 
+ matrixStats            0.53.1    2018-02-11 CRAN (R 3.2.3) 
+ memoise                1.1.0     2017-04-21 CRAN (R 3.2.3) 
+ munsell                0.4.3     2016-02-13 CRAN (R 3.2.3) 
+ nnet                   7.3-12    2016-02-02 CRAN (R 3.2.3) 
+ pillar                 1.2.1     2018-02-27 CRAN (R 3.2.3) 
+ pkgmaker               0.22      2014-05-14 CRAN (R 3.2.3) 
+ plyr                   1.8.4     2016-06-08 CRAN (R 3.2.3) 
+ qvalue                 2.2.2     2016-08-01 Bioconductor   
+ RColorBrewer           1.1-2     2014-12-07 CRAN (R 3.2.3) 
+ Rcpp                   0.12.15   2018-01-20 cran (@0.12.15)
+ RCurl                  1.95-4.10 2018-01-04 CRAN (R 3.2.3) 
+ registry               0.5       2017-12-03 CRAN (R 3.2.3) 
+ reshape2               1.4.3     2017-12-11 CRAN (R 3.2.3) 
+ rlang                  0.2.0     2018-02-20 CRAN (R 3.2.3) 
+ rngtools               1.2.4     2014-03-06 CRAN (R 3.2.3) 
+ rpart                  4.1-13    2018-02-23 CRAN (R 3.2.3) 
+ Rsamtools              1.22.0    2016-08-01 Bioconductor   
+ RSQLite                2.0       2017-06-19 CRAN (R 3.2.3) 
+ rtracklayer            1.30.4    2016-08-01 Bioconductor   
+ S4Vectors              0.8.11    2016-08-01 Bioconductor   
+ scales                 0.5.0     2017-08-24 CRAN (R 3.2.3) 
+ sessioninfo          * 1.0.0     2017-06-21 CRAN (R 3.2.3) 
+ stringi                1.1.6     2017-11-17 CRAN (R 3.2.3) 
+ stringr                1.3.0     2018-02-19 CRAN (R 3.2.3) 
+ SummarizedExperiment   1.0.2     2016-08-01 Bioconductor   
+ survival               2.41-3    2017-04-04 CRAN (R 3.2.3) 
+ tibble                 1.4.2     2018-01-22 CRAN (R 3.2.3) 
+ withr                  2.1.1     2017-12-19 CRAN (R 3.2.3) 
+ XML                    3.98-1.10 2018-02-19 CRAN (R 3.2.3) 
+ xtable                 1.8-2     2016-02-05 CRAN (R 3.2.3) 
+ XVector                0.10.0    2016-08-01 Bioconductor   
+ zlibbioc               1.16.0    2016-08-01 Bioconductor   
+> Sys.time()
+[1] "2018-03-11 14:47:48 EDT"
+> proc.time()
+    user   system  elapsed 
+23584.28 41902.40 65488.49 
+> 
+> 
+> proc.time()
+    user   system  elapsed 
+23584.28 41902.40 65488.49 

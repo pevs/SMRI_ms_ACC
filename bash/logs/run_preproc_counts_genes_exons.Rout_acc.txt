@@ -1,0 +1,598 @@
+
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ### Preprocessing featureCounts results: genes & exons
+> ### Alexis Norris
+> ### Created: 2018-02-28 (Andrew Jaffe)
+> ### Modified: 2018-03-02
+> 
+> # IMPORTANT: wd should be "hisat2_hg19"
+> setwd("../hisat2_hg19")
+> 
+> # Packages ----------------------------------
+> #library(tidyverse) # install failed on cluster
+> library(magrittr)
+> library(readr)
+> 
+> 
+> # Load lieber_functions_ajr.R ----------------
+> # jaffelab pkg requires R >= 3.3.0, so needed to download that 
+> #library("devtools")
+> #install_github("LieberInstitute/jaffelab") 
+> #library("jaffelab")
+> ### Issues loading the library on cluster, because updated R won't configure because of zlib not being detected as updated (it should be in path though!)
+> ### So load the functions here instead
+> ss <- function (x, pattern, slot = 1, ...) {
++     sapply(strsplit(x = x, split = pattern, ...), "[", slot)
++ }
+> 
+> # Load phenoData -----------------------------
+> pd <- read_tsv("featureCounts_phenoData.txt") # must have "totalMapped" column
+Parsed with column specification:
+cols(
+  FileName = col_character(),
+  A_Code = col_character(),
+  totalMapped = col_integer(),
+  FileName_clean = col_character()
+)
+> pd$full_path <- paste0("bams/", pd$FileName, ".bam")
+> 
+> ### Make sure no duplicates
+> pd <- pd[!duplicated(pd), ]  
+> 
+> # LibSize ------------------------------------
+> ### Use totalLibSize calculated for qSVA
+> print(head(pd))
+# A tibble: 6 x 5
+  FileName              A_Code totalMapped FileName_clean        full_path     
+  <chr>                 <chr>        <int> <chr>                 <chr>         
+1 A1                    A1         6391644 Array_ACC_Batch2_A1   bams/A1.bam   
+2 A10                   A10        6135721 Array_ACC_Batch2_A10  bams/A10.bam  
+3 Array_ACC_Batch5_A100 A100       1373187 Array_ACC_Batch5_A100 bams/Array_AC…
+4 Array_ACC_Batch6_A100 A100      16966720 Array_ACC_Batch6_A100 bams/Array_AC…
+5 A101                  A101       8370100 Array_ACC_Batch4_A101 bams/A101.bam 
+6 A102                  A102       1439393 Array_ACC_Batch5_A102 bams/A102.bam 
+> 
+> # Packages -----------------------------------
+> library(GenomicRanges)
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, as.vector, cbind, colnames,
+    do.call, duplicated, eval, evalq, Filter, Find, get, grep, grepl,
+    intersect, is.unsorted, lapply, lengths, Map, mapply, match, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+    union, unique, unlist, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+> library(GenomicFeatures)
+Loading required package: AnnotationDbi
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+> library(org.Hs.eg.db)
+Loading required package: DBI
+
+> library(biomaRt)
+> 
+> # Gene Counts --------------------------------
+> ### Load gene count files 
+> geneFn <- paste0("counts/genes/", 
++                  pd$FileName, 
++                  ".counts")
+> names(geneFn) <- pd$FileName
+> table(file.exists(geneFn))
+
+TRUE 
+  99 
+> 
+> ### Load gene annotation 
+> geneMap <- read.delim(geneFn[1], skip = 1, as.is = TRUE)[ ,1:6]
+> rownames(geneMap) <- geneMap$Geneid
+> geneMap$Chr <- paste0("chr", ss(geneMap$Chr, ";"))
+> geneMap$Start <- as.numeric(ss(geneMap$Start, ";"))
+> tmp <- strsplit(geneMap$End, ";")
+> geneMap$End <- as.numeric(sapply(tmp, function(x) x[length(x)]))
+> geneMap$Strand <- ss(geneMap$Strand, ";")
+> geneMap$Geneid <- NULL
+> 
+> ### Annotate with biomaRt  
+> ensembl <- useMart(
++   "ENSEMBL_MART_ENSEMBL", # VERSION 75, hg19
++ 	dataset = "hsapiens_gene_ensembl",
++ 	host = "feb2014.archive.ensembl.org"
++ )
+> sym <- getBM(
++   attributes = c("ensembl_gene_id",
++                  "hgnc_symbol",
++                  "entrezgene"), 
++ 	values = rownames(geneMap), 
++   mart = ensembl
++ )
+> geneMap$Symbol <- sym$hgnc_symbol[match(rownames(geneMap), 
++                                         sym$ensembl_gene_id)]
+> geneMap$EntrezID <- sym$entrezgene[match(rownames(geneMap), 
++                                          sym$ensembl_gene_id)]
+> 	
+> ### Get counts 
+> geneCountList <- mclapply(geneFn, function(x) {
++ 	cat(".")
++ 	read.delim(pipe(paste("cut -f7", x)), as.is = TRUE, skip = 1)[ ,1]
++ }, mc.cores = 12)
+..................................................................................................> geneCounts <- do.call("cbind", geneCountList)
+> rownames(geneCounts) <- rownames(geneMap)
+> head(geneCounts)
+                  A1 A10 Array_ACC_Batch5_A100 Array_ACC_Batch6_A100 A101 A102
+ENSG00000223972.4  0   0                     0                     0    0    0
+ENSG00000227232.4 19  10                     5                    41   27    4
+ENSG00000243485.2  0   0                     0                     0    0    0
+ENSG00000237613.2  0   0                     0                     0    0    0
+ENSG00000268020.2  0   0                     0                     0    0    0
+ENSG00000240361.1  0   0                     0                     1    0    0
+                  A12 A14 A16 Array_ACC_Batch1_A17_combined A18 A19 A2 A20 A21
+ENSG00000223972.4   0   0   0                             0   0   0  0   0   0
+ENSG00000227232.4  18   7   1                            25  13  27 18  15  26
+ENSG00000243485.2   0   0   0                             0   0   0  0   0   0
+ENSG00000237613.2   0   0   0                             0   0   0  0   0   0
+ENSG00000268020.2   0   0   0                             0   0   0  0   0   0
+ENSG00000240361.1   0   0   0                             0   0   0  0   0   0
+                  A22 A23 A24 A25 A26 A27 A29 A3 A32 A33 A34 A35 A37
+ENSG00000223972.4   0   0   0   0   0   0   0  0   0   0   0   0   0
+ENSG00000227232.4  13  26  14  20   4  15   1 17   3   1  15  14   9
+ENSG00000243485.2   0   0   0   0   0   0   0  0   0   0   0   0   0
+ENSG00000237613.2   0   0   0   0   0   0   0  0   0   0   0   0   0
+ENSG00000268020.2   0   0   0   0   0   0   0  0   0   0   0   0   0
+ENSG00000240361.1   0   0   0   0   0   0   0  0   0   0   0   0   0
+                  Array_ACC_Batch6_A38 Array_ACC_Batch5_A38
+ENSG00000223972.4                    0                    0
+ENSG00000227232.4                   56                    3
+ENSG00000243485.2                    0                    0
+ENSG00000237613.2                    0                    0
+ENSG00000268020.2                    0                    0
+ENSG00000240361.1                    0                    0
+                  Array_ACC_Batch5_A39 Array_ACC_Batch6_A39 A4 A40
+ENSG00000223972.4                    0                    0  0   0
+ENSG00000227232.4                    1                   62  5  26
+ENSG00000243485.2                    0                    0  0   0
+ENSG00000237613.2                    0                    0  0   0
+ENSG00000268020.2                    0                    0  0   0
+ENSG00000240361.1                    0                    0  0   0
+                  Array_ACC_Batch5_A41 Array_ACC_Batch6_A41 A43
+ENSG00000223972.4                    0                    0   0
+ENSG00000227232.4                    3                   34   0
+ENSG00000243485.2                    0                    0   0
+ENSG00000237613.2                    0                    0   0
+ENSG00000268020.2                    0                    0   0
+ENSG00000240361.1                    0                    0   0
+                  Array_ACC_Batch6_A44 Array_ACC_Batch5_A44
+ENSG00000223972.4                    0                    0
+ENSG00000227232.4                   58                    3
+ENSG00000243485.2                    0                    0
+ENSG00000237613.2                    0                    0
+ENSG00000268020.2                    0                    0
+ENSG00000240361.1                    0                    0
+                  Array_ACC_Batch1_A45_combined A46 Array_ACC_Batch6_A47
+ENSG00000223972.4                             0   0                    0
+ENSG00000227232.4                            20  13                   74
+ENSG00000243485.2                             0   0                    0
+ENSG00000237613.2                             0   0                    0
+ENSG00000268020.2                             0   0                    0
+ENSG00000240361.1                             0   0                    0
+                  Array_ACC_Batch5_A47 Array_ACC_Batch1_A49_combined
+ENSG00000223972.4                    0                             0
+ENSG00000227232.4                    0                            10
+ENSG00000243485.2                    0                             0
+ENSG00000237613.2                    0                             0
+ENSG00000268020.2                    0                             0
+ENSG00000240361.1                    0                             0
+                  Array_ACC_Batch5_A51 Array_ACC_Batch6_A51 A52 A54 A55
+ENSG00000223972.4                    0                    0   0   0   0
+ENSG00000227232.4                    2                   91   7   9  23
+ENSG00000243485.2                    0                    0   0   0   0
+ENSG00000237613.2                    0                    0   0   0   0
+ENSG00000268020.2                    0                    0   0   0   0
+ENSG00000240361.1                    0                    0   0   0   0
+                  Array_ACC_Batch6_A55 A57 A58 A6 A60 A62 A63 A64
+ENSG00000223972.4                    0   0   0  0   0   0   0   0
+ENSG00000227232.4                   65  18   6 26  14   0   1  14
+ENSG00000243485.2                    0   0   0  0   0   0   0   0
+ENSG00000237613.2                    0   0   0  0   0   0   0   0
+ENSG00000268020.2                    0   0   0  0   0   0   0   0
+ENSG00000240361.1                    0   0   0  0   0   0   0   0
+                  Array_ACC_Batch6_A65 Array_ACC_Batch5_A65 A66 A67
+ENSG00000223972.4                    0                    0   0   0
+ENSG00000227232.4                   69                    2  10  44
+ENSG00000243485.2                    0                    0   0   0
+ENSG00000237613.2                    0                    0   0   0
+ENSG00000268020.2                    0                    0   0   0
+ENSG00000240361.1                    0                    0   0   0
+                  Array_ACC_Batch6_A68 Array_ACC_Batch5_A68 A69 A7
+ENSG00000223972.4                    0                    0   0  0
+ENSG00000227232.4                   85                    1   3 16
+ENSG00000243485.2                    0                    0   0  0
+ENSG00000237613.2                    0                    0   0  0
+ENSG00000268020.2                    0                    0   0  0
+ENSG00000240361.1                    0                    0   0  0
+                  Array_ACC_Batch6_A70 Array_ACC_Batch3_A70
+ENSG00000223972.4                    0                    0
+ENSG00000227232.4                   36                   19
+ENSG00000243485.2                    0                    0
+ENSG00000237613.2                    0                    0
+ENSG00000268020.2                    0                    0
+ENSG00000240361.1                    0                    0
+                  Array_ACC_Batch6_A71 Array_ACC_Batch5_A71 A72 A73 A75
+ENSG00000223972.4                    0                    0   0   0   0
+ENSG00000227232.4                   22                    2   6   8  30
+ENSG00000243485.2                    0                    0   0   0   0
+ENSG00000237613.2                    0                    0   0   0   0
+ENSG00000268020.2                    0                    0   0   0   0
+ENSG00000240361.1                    0                    0   0   0   0
+                  Array_ACC_Batch6_A78 Array_ACC_Batch5_A78 A79
+ENSG00000223972.4                    0                    0   0
+ENSG00000227232.4                   29                    3   1
+ENSG00000243485.2                    0                    0   0
+ENSG00000237613.2                    0                    0   0
+ENSG00000268020.2                    0                    0   0
+ENSG00000240361.1                    0                    0   0
+                  Array_ACC_Batch1_A8_combined Array_ACC_Batch5_A81
+ENSG00000223972.4                            0                    0
+ENSG00000227232.4                           29                    4
+ENSG00000243485.2                            0                    0
+ENSG00000237613.2                            0                    0
+ENSG00000268020.2                            0                    0
+ENSG00000240361.1                            0                    0
+                  Array_ACC_Batch6_A81 A83 A84 Array_ACC_Batch5_A85
+ENSG00000223972.4                    0   0   0                    0
+ENSG00000227232.4                   45   3   5                    1
+ENSG00000243485.2                    0   0   0                    0
+ENSG00000237613.2                    0   0   0                    0
+ENSG00000268020.2                    0   0   0                    0
+ENSG00000240361.1                    0   0   0                    0
+                  Array_ACC_Batch6_A85 A86 Array_ACC_Batch1_A87_combined
+ENSG00000223972.4                    0   0                             0
+ENSG00000227232.4                   36   3                            14
+ENSG00000243485.2                    0   0                             0
+ENSG00000237613.2                    0   0                             0
+ENSG00000268020.2                    0   0                             0
+ENSG00000240361.1                    0   0                             0
+                  Array_ACC_Batch5_A88 Array_ACC_Batch6_A88 A89 A90
+ENSG00000223972.4                    0                    0   0   0
+ENSG00000227232.4                    5                   28   4   1
+ENSG00000243485.2                    0                    0   0   0
+ENSG00000237613.2                    0                    0   0   0
+ENSG00000268020.2                    0                    0   0   0
+ENSG00000240361.1                    0                    0   0   0
+                  Array_ACC_Batch1_A91_combined A92 Array_ACC_Batch5_A93
+ENSG00000223972.4                             0   0                    0
+ENSG00000227232.4                            24   9                    6
+ENSG00000243485.2                             0   0                    0
+ENSG00000237613.2                             0   0                    0
+ENSG00000268020.2                             0   0                    0
+ENSG00000240361.1                             0   0                    0
+                  Array_ACC_Batch6_A93 A94 Array_ACC_Batch6_A96
+ENSG00000223972.4                    1   0                    0
+ENSG00000227232.4                   83  14                   70
+ENSG00000243485.2                    0   0                    0
+ENSG00000237613.2                    0   0                    0
+ENSG00000268020.2                    0   0                    0
+ENSG00000240361.1                    0   0                    0
+                  Array_ACC_Batch5_A96 Array_ACC_Batch5_A97
+ENSG00000223972.4                    0                    0
+ENSG00000227232.4                    8                    5
+ENSG00000243485.2                    0                    0
+ENSG00000237613.2                    0                    0
+ENSG00000268020.2                    0                    0
+ENSG00000240361.1                    0                    0
+                  Array_ACC_Batch6_A97 A98 A99
+ENSG00000223972.4                    0   0   0
+ENSG00000227232.4                   29   5   5
+ENSG00000243485.2                    0   0   0
+ENSG00000237613.2                    0   0   0
+ENSG00000268020.2                    0   0   0
+ENSG00000240361.1                    0   0   0
+> 
+> ### Put in order
+> geneCounts <- geneCounts[ ,pd$FileName] 
+> 
+> ### Check
+> head(pd$totalMapped)
+[1]  6391644  6135721  1373187 16966720  8370100  1439393
+> dim(pd)
+[1] 99  5
+> dim(geneCounts)
+[1] 57820    99
+> head(geneCounts)
+                  A1 A10 Array_ACC_Batch5_A100 Array_ACC_Batch6_A100 A101 A102
+ENSG00000223972.4  0   0                     0                     0    0    0
+ENSG00000227232.4 19  10                     5                    41   27    4
+ENSG00000243485.2  0   0                     0                     0    0    0
+ENSG00000237613.2  0   0                     0                     0    0    0
+ENSG00000268020.2  0   0                     0                     0    0    0
+ENSG00000240361.1  0   0                     0                     1    0    0
+                  A12 A14 A16 Array_ACC_Batch1_A17_combined A18 A19 A2 A20 A21
+ENSG00000223972.4   0   0   0                             0   0   0  0   0   0
+ENSG00000227232.4  18   7   1                            25  13  27 18  15  26
+ENSG00000243485.2   0   0   0                             0   0   0  0   0   0
+ENSG00000237613.2   0   0   0                             0   0   0  0   0   0
+ENSG00000268020.2   0   0   0                             0   0   0  0   0   0
+ENSG00000240361.1   0   0   0                             0   0   0  0   0   0
+                  A22 A23 A24 A25 A26 A27 A29 A3 A32 A33 A34 A35 A37
+ENSG00000223972.4   0   0   0   0   0   0   0  0   0   0   0   0   0
+ENSG00000227232.4  13  26  14  20   4  15   1 17   3   1  15  14   9
+ENSG00000243485.2   0   0   0   0   0   0   0  0   0   0   0   0   0
+ENSG00000237613.2   0   0   0   0   0   0   0  0   0   0   0   0   0
+ENSG00000268020.2   0   0   0   0   0   0   0  0   0   0   0   0   0
+ENSG00000240361.1   0   0   0   0   0   0   0  0   0   0   0   0   0
+                  Array_ACC_Batch6_A38 Array_ACC_Batch5_A38
+ENSG00000223972.4                    0                    0
+ENSG00000227232.4                   56                    3
+ENSG00000243485.2                    0                    0
+ENSG00000237613.2                    0                    0
+ENSG00000268020.2                    0                    0
+ENSG00000240361.1                    0                    0
+                  Array_ACC_Batch5_A39 Array_ACC_Batch6_A39 A4 A40
+ENSG00000223972.4                    0                    0  0   0
+ENSG00000227232.4                    1                   62  5  26
+ENSG00000243485.2                    0                    0  0   0
+ENSG00000237613.2                    0                    0  0   0
+ENSG00000268020.2                    0                    0  0   0
+ENSG00000240361.1                    0                    0  0   0
+                  Array_ACC_Batch5_A41 Array_ACC_Batch6_A41 A43
+ENSG00000223972.4                    0                    0   0
+ENSG00000227232.4                    3                   34   0
+ENSG00000243485.2                    0                    0   0
+ENSG00000237613.2                    0                    0   0
+ENSG00000268020.2                    0                    0   0
+ENSG00000240361.1                    0                    0   0
+                  Array_ACC_Batch6_A44 Array_ACC_Batch5_A44
+ENSG00000223972.4                    0                    0
+ENSG00000227232.4                   58                    3
+ENSG00000243485.2                    0                    0
+ENSG00000237613.2                    0                    0
+ENSG00000268020.2                    0                    0
+ENSG00000240361.1                    0                    0
+                  Array_ACC_Batch1_A45_combined A46 Array_ACC_Batch6_A47
+ENSG00000223972.4                             0   0                    0
+ENSG00000227232.4                            20  13                   74
+ENSG00000243485.2                             0   0                    0
+ENSG00000237613.2                             0   0                    0
+ENSG00000268020.2                             0   0                    0
+ENSG00000240361.1                             0   0                    0
+                  Array_ACC_Batch5_A47 Array_ACC_Batch1_A49_combined
+ENSG00000223972.4                    0                             0
+ENSG00000227232.4                    0                            10
+ENSG00000243485.2                    0                             0
+ENSG00000237613.2                    0                             0
+ENSG00000268020.2                    0                             0
+ENSG00000240361.1                    0                             0
+                  Array_ACC_Batch5_A51 Array_ACC_Batch6_A51 A52 A54 A55
+ENSG00000223972.4                    0                    0   0   0   0
+ENSG00000227232.4                    2                   91   7   9  23
+ENSG00000243485.2                    0                    0   0   0   0
+ENSG00000237613.2                    0                    0   0   0   0
+ENSG00000268020.2                    0                    0   0   0   0
+ENSG00000240361.1                    0                    0   0   0   0
+                  Array_ACC_Batch6_A55 A57 A58 A6 A60 A62 A63 A64
+ENSG00000223972.4                    0   0   0  0   0   0   0   0
+ENSG00000227232.4                   65  18   6 26  14   0   1  14
+ENSG00000243485.2                    0   0   0  0   0   0   0   0
+ENSG00000237613.2                    0   0   0  0   0   0   0   0
+ENSG00000268020.2                    0   0   0  0   0   0   0   0
+ENSG00000240361.1                    0   0   0  0   0   0   0   0
+                  Array_ACC_Batch6_A65 Array_ACC_Batch5_A65 A66 A67
+ENSG00000223972.4                    0                    0   0   0
+ENSG00000227232.4                   69                    2  10  44
+ENSG00000243485.2                    0                    0   0   0
+ENSG00000237613.2                    0                    0   0   0
+ENSG00000268020.2                    0                    0   0   0
+ENSG00000240361.1                    0                    0   0   0
+                  Array_ACC_Batch6_A68 Array_ACC_Batch5_A68 A69 A7
+ENSG00000223972.4                    0                    0   0  0
+ENSG00000227232.4                   85                    1   3 16
+ENSG00000243485.2                    0                    0   0  0
+ENSG00000237613.2                    0                    0   0  0
+ENSG00000268020.2                    0                    0   0  0
+ENSG00000240361.1                    0                    0   0  0
+                  Array_ACC_Batch6_A70 Array_ACC_Batch3_A70
+ENSG00000223972.4                    0                    0
+ENSG00000227232.4                   36                   19
+ENSG00000243485.2                    0                    0
+ENSG00000237613.2                    0                    0
+ENSG00000268020.2                    0                    0
+ENSG00000240361.1                    0                    0
+                  Array_ACC_Batch6_A71 Array_ACC_Batch5_A71 A72 A73 A75
+ENSG00000223972.4                    0                    0   0   0   0
+ENSG00000227232.4                   22                    2   6   8  30
+ENSG00000243485.2                    0                    0   0   0   0
+ENSG00000237613.2                    0                    0   0   0   0
+ENSG00000268020.2                    0                    0   0   0   0
+ENSG00000240361.1                    0                    0   0   0   0
+                  Array_ACC_Batch6_A78 Array_ACC_Batch5_A78 A79
+ENSG00000223972.4                    0                    0   0
+ENSG00000227232.4                   29                    3   1
+ENSG00000243485.2                    0                    0   0
+ENSG00000237613.2                    0                    0   0
+ENSG00000268020.2                    0                    0   0
+ENSG00000240361.1                    0                    0   0
+                  Array_ACC_Batch1_A8_combined Array_ACC_Batch5_A81
+ENSG00000223972.4                            0                    0
+ENSG00000227232.4                           29                    4
+ENSG00000243485.2                            0                    0
+ENSG00000237613.2                            0                    0
+ENSG00000268020.2                            0                    0
+ENSG00000240361.1                            0                    0
+                  Array_ACC_Batch6_A81 A83 A84 Array_ACC_Batch5_A85
+ENSG00000223972.4                    0   0   0                    0
+ENSG00000227232.4                   45   3   5                    1
+ENSG00000243485.2                    0   0   0                    0
+ENSG00000237613.2                    0   0   0                    0
+ENSG00000268020.2                    0   0   0                    0
+ENSG00000240361.1                    0   0   0                    0
+                  Array_ACC_Batch6_A85 A86 Array_ACC_Batch1_A87_combined
+ENSG00000223972.4                    0   0                             0
+ENSG00000227232.4                   36   3                            14
+ENSG00000243485.2                    0   0                             0
+ENSG00000237613.2                    0   0                             0
+ENSG00000268020.2                    0   0                             0
+ENSG00000240361.1                    0   0                             0
+                  Array_ACC_Batch5_A88 Array_ACC_Batch6_A88 A89 A90
+ENSG00000223972.4                    0                    0   0   0
+ENSG00000227232.4                    5                   28   4   1
+ENSG00000243485.2                    0                    0   0   0
+ENSG00000237613.2                    0                    0   0   0
+ENSG00000268020.2                    0                    0   0   0
+ENSG00000240361.1                    0                    0   0   0
+                  Array_ACC_Batch1_A91_combined A92 Array_ACC_Batch5_A93
+ENSG00000223972.4                             0   0                    0
+ENSG00000227232.4                            24   9                    6
+ENSG00000243485.2                             0   0                    0
+ENSG00000237613.2                             0   0                    0
+ENSG00000268020.2                             0   0                    0
+ENSG00000240361.1                             0   0                    0
+                  Array_ACC_Batch6_A93 A94 Array_ACC_Batch6_A96
+ENSG00000223972.4                    1   0                    0
+ENSG00000227232.4                   83  14                   70
+ENSG00000243485.2                    0   0                    0
+ENSG00000237613.2                    0   0                    0
+ENSG00000268020.2                    0   0                    0
+ENSG00000240361.1                    0   0                    0
+                  Array_ACC_Batch5_A96 Array_ACC_Batch5_A97
+ENSG00000223972.4                    0                    0
+ENSG00000227232.4                    8                    5
+ENSG00000243485.2                    0                    0
+ENSG00000237613.2                    0                    0
+ENSG00000268020.2                    0                    0
+ENSG00000240361.1                    0                    0
+                  Array_ACC_Batch6_A97 A98 A99
+ENSG00000223972.4                    0   0   0
+ENSG00000227232.4                   29   5   5
+ENSG00000243485.2                    0   0   0
+ENSG00000237613.2                    0   0   0
+ENSG00000268020.2                    0   0   0
+ENSG00000240361.1                    0   0   0
+> 
+> ### Calculate RPKM 
+> bg <- matrix(
++   rep(pd$totalMapped), 
++   nc = nrow(pd), 
++   nr = nrow(geneCounts),	
++   byrow = TRUE)
+> widG <- matrix(
++   rep(geneMap$Length), 
++   nr = nrow(geneCounts), 
++ 	nc = nrow(pd),	
++   byrow = FALSE)
+> geneRpkm <- geneCounts / (widG/1000) / (bg/1e6)
+> 
+> ### number of reads assigned 
+> geneStatList <- lapply(
++   paste0(geneFn, ".summary"), 
++ 	read.delim,
++   row.names = 1)
+> geneStats <- do.call("cbind", geneStatList)
+> colnames(geneStats) <- pd$FileName 
+> pd$totalAssignedGene <- as.numeric(geneStats[1, ] / colSums(geneStats))
+> 
+> 
+> # Exon counts ---------------------------------
+> ### Filenames
+> exonFn <- paste0("counts/exons/", pd$FileName, ".counts")
+> names(exonFn) = pd$FileName
+> all(file.exists(exonFn))
+[1] TRUE
+> 
+> ### Load exon annotation 
+> exonMap <- read.delim(exonFn[1], skip = 1, as.is = TRUE)[ ,1:6]
+> exonMap$Symbol <- sym$hgnc_symbol[match(exonMap$Geneid, 
++                                         sym$ensembl_gene_id)]
+> exonMap$EntrezID <- sym$entrezgene[match(exonMap$Geneid, 
++                                          sym$ensembl_gene_id)]
+> rownames(exonMap) <- paste0("e", rownames(exonMap))
+> exonMap$Chr <- paste0("chr", exonMap$Chr)
+> 
+> ### Load counts
+> exonCountList <- mclapply(exonFn, function(x) {
++ 	cat(".")
++ 	read.delim(pipe(paste("cut -f7", x)), as.is = TRUE, skip = 1)[ ,1]
++ }, mc.cores = 12)
+.................................................................................................> exonCounts <- do.call("cbind", exonCountList)
+> rownames(exonCounts) <- rownames(exonMap)
+> 
+> ### Put in order
+> exonCounts <- exonCounts[ , pd$FileName] 
+> 
+> ### Remove duplicates
+> eMap <- GRanges(exonMap$Chr, IRanges(exonMap$Start, exonMap$End))
+> keepIndex <- which(!duplicated(eMap))
+> exonCounts <- exonCounts[keepIndex, ]
+> exonMap <- exonMap[keepIndex, ]
+> 
+> ### Calculate RPKM
+> bgE <- matrix(
++   rep(pd$totalMapped), 
++   nc = nrow(pd), 
++ 	nr = nrow(exonCounts),	
++   byrow = TRUE)
+> widE <- matrix(
++   rep(exonMap$Length), 
++   nr = nrow(exonCounts), 
++ 	nc = nrow(pd),	
++   byrow = FALSE)
+> exonRpkm = exonCounts / (widE/1000) / (bgE/1e6)
+> 
+>  
+> # Save counts ----------------------------
+> save(pd, 
++      geneCounts, geneMap, 
++      exonCounts, exonMap, 
++      compress = TRUE,
++      file = "rawCounts_n20_genes_exons.rda")
+> save(pd, 
++      geneRpkm,	geneMap, 
++      exonRpkm, exonMap, 
++      compress = TRUE,
++      file = "rpkmCounts_n20_genes_exons.rda")
+> 
+> # Write out for coverage ------------------
+> write_tsv(pd[ , c("sample_name", "sample_id")], 
++           "samples_with_bams.txt")
+Error: Columns `sample_name`, `sample_id` not found
+Execution halted

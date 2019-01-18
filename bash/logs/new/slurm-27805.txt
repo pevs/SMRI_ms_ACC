@@ -1,0 +1,1745 @@
+run_download_reads.sh starting at:
+Wed Feb 28 17:06:49 EST 2018
+Directory path is: /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19
+GTF is: /mnt/data/RNASeq/methods/references/hg19/gencode.v19.annotation.gtf
+Annotation is: 
+samtools version 1.3.1
+bedtools version 2.25.0
+subread version 1.6.0
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 42: cd: /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/hisat_hg19/counts: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL1_387h_NoIndex_L008 hisat output and writing out as 12_4_13_OCL1_387h_NoIndex_L008.
+Wed Feb 28 17:06:49 EST 2018
+   genes...
+Wed Feb 28 17:06:49 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:49 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL1_387h_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL1_387h_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL1_387h_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL1_387h_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL2_342h_NoIndex_L008 hisat output and writing out as 12_4_13_OCL2_342h_NoIndex_L008.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL2_342h_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL2_342h_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL2_342h_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/12_4_13_OCL2_342h_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/167S_NoIndex_L007 hisat output and writing out as 167S_NoIndex_L007.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/167S_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/167S_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/167S_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/167S_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/204S_NoIndex_L001 hisat output and writing out as 204S_NoIndex_L001.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/204S_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/204S_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/204S_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/204S_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/226S_NoIndex_L004 hisat output and writing out as 226S_NoIndex_L004.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/226S_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/226S_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/226S_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/226S_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/229S_NoIndex_L003 hisat output and writing out as 229S_NoIndex_L003.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/229S_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/229S_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/229S_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/229S_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/231S_NoIndex_L003 hisat output and writing out as 231S_NoIndex_L003.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/231S_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/231S_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/231S_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/231S_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/333S_NoIndex_L007 hisat output and writing out as 333S_NoIndex_L007.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/333S_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/333S_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/333S_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/333S_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/350S_NoIndex_L005 hisat output and writing out as 350S_NoIndex_L005.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/350S_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/350S_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/350S_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/350S_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/381S_NoIndex_L002 hisat output and writing out as 381S_NoIndex_L002.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/381S_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/381S_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/381S_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/381S_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/401S_NoIndex_L004 hisat output and writing out as 401S_NoIndex_L004.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/401S_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/401S_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/401S_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/401S_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/409S_NoIndex_L006 hisat output and writing out as 409S_NoIndex_L006.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/409S_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/409S_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/409S_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/409S_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/414S_NoIndex_L008 hisat output and writing out as 414S_NoIndex_L008.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/414S_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/414S_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/414S_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/414S_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/422S_NoIndex_L002 hisat output and writing out as 422S_NoIndex_L002.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/422S_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/422S_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/422S_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/422S_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S110_NoIndex_L007 hisat output and writing out as S110_NoIndex_L007.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S110_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S110_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S110_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S110_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S111_NoIndex_L006 hisat output and writing out as S111_NoIndex_L006.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S111_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S111_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S111_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S111_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S113_NoIndex_L004 hisat output and writing out as S113_NoIndex_L004.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S113_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S113_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S113_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S113_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S119_NoIndex_L003 hisat output and writing out as S119_NoIndex_L003.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S119_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S119_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S119_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S119_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S133_NoIndex_L005 hisat output and writing out as S133_NoIndex_L005.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S133_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S133_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S133_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S133_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S155_NoIndex_L007 hisat output and writing out as S155_NoIndex_L007.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S155_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S155_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S155_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S155_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_170_NoIndex_L003 hisat output and writing out as S_170_NoIndex_L003.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_170_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_170_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_170_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_170_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S175_NoIndex_L002 hisat output and writing out as S175_NoIndex_L002.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S175_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S175_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S175_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S175_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S187_NoIndex_L008 hisat output and writing out as S187_NoIndex_L008.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S187_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S187_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S187_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S187_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S189_NoIndex_L002 hisat output and writing out as S189_NoIndex_L002.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S189_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S189_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S189_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S189_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S192_NoIndex_L008 hisat output and writing out as S192_NoIndex_L008.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S192_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S192_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S192_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S192_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_193_NoIndex_L001 hisat output and writing out as S_193_NoIndex_L001.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_193_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_193_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_193_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_193_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S198_NoIndex_L003 hisat output and writing out as S198_NoIndex_L003.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S198_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S198_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S198_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S198_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_199_NoIndex_L002 hisat output and writing out as S_199_NoIndex_L002.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_199_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_199_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_199_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_199_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S201_NoIndex_L002 hisat output and writing out as S201_NoIndex_L002.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S201_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S201_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S201_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S201_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S203_NoIndex_L006 hisat output and writing out as S203_NoIndex_L006.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S203_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S203_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S203_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S203_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S212_NoIndex_L008 hisat output and writing out as S212_NoIndex_L008.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S212_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S212_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S212_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S212_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_213_NoIndex_L003 hisat output and writing out as S_213_NoIndex_L003.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_213_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_213_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_213_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_213_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S217_NoIndex_L003 hisat output and writing out as S217_NoIndex_L003.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S217_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S217_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S217_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S217_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S222_NoIndex_L007 hisat output and writing out as S222_NoIndex_L007.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S222_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S222_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S222_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S222_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S224_NoIndex_L007 hisat output and writing out as S224_NoIndex_L007.
+Wed Feb 28 17:06:50 EST 2018
+   genes...
+Wed Feb 28 17:06:50 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S224_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S224_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S224_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S224_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S227_NoIndex_L004 hisat output and writing out as S227_NoIndex_L004.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S227_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S227_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S227_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S227_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S235_NoIndex_L005 hisat output and writing out as S235_NoIndex_L005.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S235_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S235_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S235_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S235_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S238_NoIndex_L001 hisat output and writing out as S238_NoIndex_L001.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S238_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S238_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S238_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S238_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S244_NoIndex_L008 hisat output and writing out as S244_NoIndex_L008.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S244_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S244_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S244_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S244_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S255_NoIndex_L006 hisat output and writing out as S255_NoIndex_L006.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S255_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S255_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S255_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S255_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S262_NoIndex_L006 hisat output and writing out as S262_NoIndex_L006.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S262_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S262_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S262_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S262_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S268_NoIndex_L007 hisat output and writing out as S268_NoIndex_L007.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S268_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S268_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S268_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S268_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S270_NoIndex_L003 hisat output and writing out as S270_NoIndex_L003.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S270_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S270_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S270_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S270_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S280_NoIndex_L003 hisat output and writing out as S280_NoIndex_L003.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S280_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S280_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S280_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S280_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S286_NoIndex_L008 hisat output and writing out as S286_NoIndex_L008.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S286_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S286_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S286_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S286_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S288_NoIndex_L004 hisat output and writing out as S288_NoIndex_L004.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S288_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S288_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S288_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S288_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_289_NoIndex_L004 hisat output and writing out as S_289_NoIndex_L004.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_289_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_289_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_289_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_289_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S290_NoIndex_L001 hisat output and writing out as S290_NoIndex_L001.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S290_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S290_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S290_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S290_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S291_NoIndex_L004 hisat output and writing out as S291_NoIndex_L004.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S291_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S291_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S291_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S291_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_298_NoIndex_L005 hisat output and writing out as S_298_NoIndex_L005.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_298_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_298_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_298_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_298_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S299_NoIndex_L005 hisat output and writing out as S299_NoIndex_L005.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S299_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S299_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S299_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S299_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S302_NoIndex_L002 hisat output and writing out as S302_NoIndex_L002.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S302_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S302_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S302_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S302_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S306_NoIndex_L007 hisat output and writing out as S306_NoIndex_L007.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S306_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S306_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S306_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S306_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S314_NoIndex_L007 hisat output and writing out as S314_NoIndex_L007.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S314_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S314_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S314_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S314_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S321_NoIndex_L001 hisat output and writing out as S321_NoIndex_L001.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S321_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S321_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S321_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S321_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_326_NoIndex_L004 hisat output and writing out as S_326_NoIndex_L004.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_326_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_326_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_326_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_326_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S328_NoIndex_L008 hisat output and writing out as S328_NoIndex_L008.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S328_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S328_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S328_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S328_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S335_NoIndex_L008 hisat output and writing out as S335_NoIndex_L008.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S335_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S335_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S335_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S335_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S336_NoIndex_L006 hisat output and writing out as S336_NoIndex_L006.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S336_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S336_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S336_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S336_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_340_NoIndex_L006 hisat output and writing out as S_340_NoIndex_L006.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_340_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_340_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_340_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_340_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S354_NoIndex_L001 hisat output and writing out as S354_NoIndex_L001.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S354_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S354_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S354_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S354_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S356_NoIndex_L004 hisat output and writing out as S356_NoIndex_L004.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S356_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S356_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S356_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S356_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_357_NoIndex_L007 hisat output and writing out as S_357_NoIndex_L007.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_357_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_357_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_357_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_357_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_359_NoIndex_L008 hisat output and writing out as S_359_NoIndex_L008.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_359_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_359_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_359_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_359_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S361_NoIndex_L007 hisat output and writing out as S361_NoIndex_L007.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S361_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S361_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S361_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S361_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S365_NoIndex_L008 hisat output and writing out as S365_NoIndex_L008.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S365_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S365_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S365_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S365_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S368_NoIndex_L003 hisat output and writing out as S368_NoIndex_L003.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S368_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S368_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S368_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S368_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_369_NoIndex_L005 hisat output and writing out as S_369_NoIndex_L005.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_369_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_369_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_369_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_369_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S373_NoIndex_L005 hisat output and writing out as S373_NoIndex_L005.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S373_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S373_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S373_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S373_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S377_NoIndex_L001 hisat output and writing out as S377_NoIndex_L001.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S377_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S377_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S377_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S377_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S380_NoIndex_L002 hisat output and writing out as S380_NoIndex_L002.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S380_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S380_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S380_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S380_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S391_NoIndex_L006 hisat output and writing out as S391_NoIndex_L006.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S391_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S391_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S391_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S391_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S392_NoIndex_L005 hisat output and writing out as S392_NoIndex_L005.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S392_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S392_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S392_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S392_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S393_NoIndex_L004 hisat output and writing out as S393_NoIndex_L004.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S393_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S393_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S393_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S393_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S395_NoIndex_L005 hisat output and writing out as S395_NoIndex_L005.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S395_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S395_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S395_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S395_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S399_NoIndex_L002 hisat output and writing out as S399_NoIndex_L002.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S399_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S399_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S399_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S399_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S39_NoIndex_L006 hisat output and writing out as S39_NoIndex_L006.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S39_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S39_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S39_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S39_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S400_NoIndex_L007 hisat output and writing out as S400_NoIndex_L007.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S400_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S400_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S400_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S400_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_404_NoIndex_L006 hisat output and writing out as S_404_NoIndex_L006.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_404_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_404_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_404_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_404_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S411_NoIndex_L003 hisat output and writing out as S411_NoIndex_L003.
+Wed Feb 28 17:06:51 EST 2018
+   genes...
+Wed Feb 28 17:06:51 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S411_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S411_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S411_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S411_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S412_NoIndex_L005 hisat output and writing out as S412_NoIndex_L005.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S412_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S412_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S412_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S412_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S415_NoIndex_L002 hisat output and writing out as S415_NoIndex_L002.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S415_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S415_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S415_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S415_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S421_NoIndex_L004 hisat output and writing out as S421_NoIndex_L004.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S421_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S421_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S421_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S421_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S424_NoIndex_L003 hisat output and writing out as S424_NoIndex_L003.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S424_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S424_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S424_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S424_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S428_NoIndex_L005 hisat output and writing out as S428_NoIndex_L005.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S428_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S428_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S428_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S428_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S42_NoIndex_L001 hisat output and writing out as S42_NoIndex_L001.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S42_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S42_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S42_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S42_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_433_NoIndex_L007 hisat output and writing out as S_433_NoIndex_L007.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_433_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_433_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_433_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_433_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S438_NoIndex_L004 hisat output and writing out as S438_NoIndex_L004.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S438_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S438_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S438_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S438_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S439_NoIndex_L004 hisat output and writing out as S439_NoIndex_L004.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S439_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S439_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S439_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S439_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S440_NoIndex_L001 hisat output and writing out as S440_NoIndex_L001.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S440_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S440_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S440_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S440_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S441_NoIndex_L005 hisat output and writing out as S441_NoIndex_L005.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S441_NoIndex_L005.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S441_NoIndex_L005.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S441_NoIndex_L005.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S441_NoIndex_L005_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S442_NoIndex_L008 hisat output and writing out as S442_NoIndex_L008.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S442_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S442_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S442_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S442_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S446_NoIndex_L006 hisat output and writing out as S446_NoIndex_L006.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S446_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S446_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S446_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S446_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S447_NoIndex_L004 hisat output and writing out as S447_NoIndex_L004.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S447_NoIndex_L004.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S447_NoIndex_L004.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S447_NoIndex_L004.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S447_NoIndex_L004_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_449_NoIndex_L008 hisat output and writing out as S_449_NoIndex_L008.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_449_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_449_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_449_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S_449_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S450_NoIndex_L003 hisat output and writing out as S450_NoIndex_L003.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S450_NoIndex_L003.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S450_NoIndex_L003.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S450_NoIndex_L003.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S450_NoIndex_L003_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S451_NoIndex_L002 hisat output and writing out as S451_NoIndex_L002.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S451_NoIndex_L002.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S451_NoIndex_L002.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S451_NoIndex_L002.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S451_NoIndex_L002_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S452_NoIndex_L006 hisat output and writing out as S452_NoIndex_L006.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S452_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S452_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S452_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S452_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S456_NoIndex_L006 hisat output and writing out as S456_NoIndex_L006.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S456_NoIndex_L006.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S456_NoIndex_L006.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S456_NoIndex_L006.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S456_NoIndex_L006_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S465_NoIndex_L001 hisat output and writing out as S465_NoIndex_L001.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S465_NoIndex_L001.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S465_NoIndex_L001.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S465_NoIndex_L001.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S465_NoIndex_L001_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S468_NoIndex_L007 hisat output and writing out as S468_NoIndex_L007.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S468_NoIndex_L007.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S468_NoIndex_L007.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S468_NoIndex_L007.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S468_NoIndex_L007_jxns_primaryOnly_regtools.bed: No such file or directory
+Script starting for /mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S476_NoIndex_L008 hisat output and writing out as S476_NoIndex_L008.
+Wed Feb 28 17:06:52 EST 2018
+   genes...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 77: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 79: -a: command not found
+      exons...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 84: /mnt/data/RNASeq/methods/packages//featureCounts: No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 86: -a: command not found
+         junctions...
+Wed Feb 28 17:06:52 EST 2018
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 93: /tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S476_NoIndex_L008.bam: No such file or directory
+[E::hts_open_format] fail to open file '/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S476_NoIndex_L008.bam'
+samtools index: failed to open "/tmp//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S476_NoIndex_L008.bam": No such file or directory
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 95: regtools: command not found
+/cm/local/apps/slurm/var/spool/job27805/slurm_script: line 97: jxns//mnt/data/RNASeq/data/Stanley/ArrayCollection_Hippocampus/hisat2_hg19/bams/S476_NoIndex_L008_jxns_primaryOnly_regtools.bed: No such file or directory
+Script completed at:
+Wed Feb 28 17:06:52 EST 2018
