@@ -21,12 +21,15 @@
 #geneMap <- readRDS("input/refs/GeneMap_Hsapiens.gencode.v19.GRCh37.rds")
 
 ### phenoData
-##phenoList <- readRDS("input/pheno/phenoData_full_list.rds")
+#phenoList <- readRDS("input/pheno/phenoData_full_list_degMat.rds")
 
 
 # Setup --------------------------------------------------------
 ### Packages
 library(GenomicRanges)
+library(tidyverse)
+library(plyr)
+library(edgeR)
 
 ### Parameters
 brain_region <- "ACC"
@@ -35,7 +38,7 @@ analysis_name <- paste0("exprsData_import_jxns_", brain_region)
 
 # Load phenoData -----------------------------------------------
 ### Load
-phenoList <- readRDS("input/pheno/phenoData_full_list.rds")
+phenoList <- readRDS("input/pheno/phenoData_full_list_degMat.rds")
 
 ### Subset
 pheno <- phenoList[[brain_region]]
@@ -76,7 +79,7 @@ table(!is.na(features$gene_id) %in% geneMap$gene_id)
 table(duplicated(geneMap$gene_id))
 features <- geneMap %>%
   mutate(gene_strand = strand) %>%
-  select(gene_id, gene_symbol, gene_type, gene_strand) %>%
+  dplyr::select(gene_id, gene_symbol, gene_type, gene_strand) %>%
   plyr::join(
     features,
     by = "gene_id",
@@ -86,7 +89,7 @@ features <- geneMap %>%
     feature_name = gene_symbol,
     chr = seqnames
   ) %>%
-  select(-one_of(c("newGeneID", "newGeneSymbol", "seqnames")))
+  dplyr::select(-one_of(c("newGeneID", "newGeneSymbol", "seqnames")))
 
 ### Rownames = feature_id (must be df, not tibble!)
 features <- as.data.frame(features)
@@ -116,7 +119,7 @@ pheno$Dx <- pheno$group
 pheno$group <- NULL
 
 ### Combine into dge
-dge <- edgeR::DGEList(
+dge <- DGEList(
   counts = counts,
   genes = features,
   samples = pheno,
