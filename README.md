@@ -42,12 +42,12 @@ Additional data (e.g., qRT-PCR, protein expression, and cell type counts) availa
 ## 3. Preprocessing 
 
 ### Library size and degradation stats  
-- import_libsize_degstats.R  
+- libsize_degstats.R  
 
 ### Combine region datasets  
-- import_genes_exons.R  
-- import_jxns.R  
-- import_regions.R  
+- exprsData_import_genes_exons.R  
+- exprsData_import_jxns.R  
+- exprsData_import_regions.R  
 - hpc_fix_qsva_regions.R  --> is this in exprsData_prep.R???
 
 ### Filtering samples and features
