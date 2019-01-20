@@ -25,105 +25,111 @@ Additional data (e.g., qRT-PCR, protein expression, and cell type counts) availa
 
 # Analysis workflow
 
-## 1. Alignment
-run_align_hisat2.sh
+## 1. Alignment  
+- run_align_hisat2.sh
 
 ## 2. Quantify feature expression
 
-### Genes, exons, and junctions (featureCounts)
-run_counts_genes_exons_jxns.sh
-run_anno_genes_exons.R 
-run_anno_jxns.R 
+### Genes, exons, and junctions (featureCounts)  
+- run_counts_genes_exons_jxns.sh  
+- run_anno_genes_exons.R   
+- run_anno_jxns.R 
 
-### Regions (derfinder)
-run_counts_regions.sh
-run_anno_regions.sh
+### Regions (derfinder)  
+- run_counts_regions.sh  
+- run_anno_regions.sh  
 
 ## 3. Preprocessing 
 
-### Combine region datasets
-__(insert here)__.R
-hpc_fix_qsva_regions.R
+### Combine region datasets  
+- __(insert here)__.R  
+- hpc_fix_qsva_regions.R  
 
 ### Filtering samples and features
-exprsData_prep.R
-exprsData_filter.R
+- exprsData_prep.R  
+- exprsData_filter.R  
 
-### Cohort descriptive stats (tableone)
-cohort_stats.R
+### Cohort descriptive stats (tableone)   
+- cohort_stats.R 
 
-## 4. Outlier analysis (PCA)
-pca.R
+## 4. Outlier analysis (PCA)   
+- pca.R
 
 ## 5. Estimate postmortem degradation (qSVA)
-run_qsva_degstats.sh
-qsva.R
-plot_qsva.R
+
+### Get expression (coverage) for degradation-associated regions  
+- run_qsva_degstats.sh
+
+### Run qSVA
+- qsva.R
+
+### Plot
+- plot_qsva.R
 
 ## 6. Differential expression analysis
 
-### Run edgeR stattests
-edgeR.R
+### Run edgeR stattests  
+- edgeR.R
 
 ### Run edgeR for posthoc tests
 
-#### Antipsychotic medication in ACC dataset
-posthoc_antipsychotics.R
+#### Antipsychotic medication in ACC dataset  
+- posthoc_antipsychotics.R
 
-#### Other brain regions (PFC and HPC)
-posthoc_brainregions.R
+#### Other brain regions (PFC and HPC)  
+- posthoc_brainregions.R
 
-### Plot
-plot_edgeR.R
+### Plot  
+- plot_edgeR.R
 
-### Genelists of differentially expressed genes (DEGs)
-genelists.R
+### Genelists of differentially expressed genes (DEGs)  
+- genelists.R
 
 
 ## 7. Enrichment testing of DEGs
 
-### Cell type enrichment analysis
+### Cell type enrichment analysis (EWCE)
 
-#### Preprocessing single cell transcriptome datasets for EWCE
-celldata_Darmanis.R
-celldata_Lake.R
+#### Preprocessing single cell transcriptome datasets   
+- celldata_Darmanis.R  
+- celldata_Lake.R  
 
-#### Run EWCE
-ewce_celltypes.R
+#### Run EWCE  
+- ewce_celltypes.R  
 
-#### Plot
-plot_ewce_celltypes.R
+#### Plot  
+- plot_ewce_celltypes.R
 
-### Geneset enrichment analysis
-gsea_kegg.R
-plot_gsea_kegg.R
+### Geneset enrichment analysis (ClusterProfiler)    
+- gsea_kegg.R  
+- plot_gsea_kegg.R  
 
 
 ## 8. Overlap of DEGs with posthoc tests and other genesets
 
-### Annotation references
-anno_geneMap_genomicState.R
-anno_hgnc.R
-anno_rmsk.R
-anno_qsva.R
+### Annotation references  
+- anno_geneMap_genomicState.R  
+- anno_hgnc.R  
+- anno_rmsk.R  
+- anno_qsva.R  
 
 
 ### Updating genesets' gene symbols
 
-#### Previous analysis of RNA-Seq data
-anno_Zhao_ACC.R
-anno_Darby_HPC.R
+#### Previous analysis of RNA-Seq data  
+- anno_Zhao_ACC.R  
+- anno_Darby_HPC.R  
 
-#### SZ-associated genes
-anno_PGC_108loci_Ripke2014.R
-anno_PheGenI.R
+#### SZ-associated genes  
+- anno_PGC_108loci_Ripke2014.R  
+- anno_PheGenI.R  
 
-### Add overlaps to DEG table
-overlaps.R
+### Add overlaps to DEG table  
+- overlaps.R  
 
-### Plot overlaps
-_not finished_ plot_UpSet.R
+### Plot overlaps  
+- _not finished_ plot_UpSet.R  
 
 
-## 9. Correlation/validation with SNCID data
-_not finished_ addl_tests.R
+## 9. Correlation/validation with SNCID data  
+- _not finished_ addl_tests.R  
