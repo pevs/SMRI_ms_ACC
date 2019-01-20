@@ -26,7 +26,7 @@
 #features <- readRDS("input/refs/GeneMap_Hsapiens.gencode.v19.GRCh37.rds")
 
 ### phenoData
-#phenoList <- saveRDS("input/phenoData/phenoData_full_list.rds")
+#phenoList <- readRDS("input/pheno/phenoData_full_list.rds")
 
 
 # Setup --------------------------------------------------------
@@ -40,7 +40,7 @@ analysis_name <- "exprsData_import_genes_exons"
 
 # Load phenoData -----------------------------------------------
 ### Load
-phenoList <- saveRDS("input/phenoData/phenoData_full_list.rds")
+phenoList <- readRDS("input/pheno/phenoData_full_list.rds")
 
 ### Subset
 pheno <- phenoList[[brain_region]]
