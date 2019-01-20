@@ -48,7 +48,7 @@ Additional data (e.g., qRT-PCR, protein expression, and cell type counts) availa
 - exprsData_import_genes_exons.R  
 - exprsData_import_jxns.R  
 - exprsData_import_regions.R  
-- hpc_fix_qsva_regions.R  --> is this in exprsData_prep.R???
+- hpc_fix_qsva_regions.R   
 
 ### Filtering samples and features
 - exprsData_prep.R  
