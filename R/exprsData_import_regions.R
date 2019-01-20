@@ -16,12 +16,15 @@
 #features <- readRDS(paste0("input/refs/features_", brain_region, "_regions.rds"))
 
 ### phenoData
-#phenoList <- readRDS("input/pheno/phenoData_full_list.rds")
+#phenoList <- readRDS("input/pheno/phenoData_full_list_degMat.rds")
 
 
 # Setup --------------------------------------------------------
 ### Packages
 library(GenomicRanges)
+library(tidyverse)
+library(plyr)
+library(edgeR)
 
 ### Parameters
 brain_region <- "ACC"
@@ -31,7 +34,7 @@ analysis_name <- paste0("exprsData_import_regions_", brain_region)
 
 # Load phenoData -----------------------------------------------
 ### Load
-phenoList <- readRDS("input/pheno/phenoData_full_list.rds")
+phenoList <- readRDS("input/pheno/phenoData_full_list_degMat.rds")
 
 ### Subset
 pheno <- phenoList[[brain_region]]
