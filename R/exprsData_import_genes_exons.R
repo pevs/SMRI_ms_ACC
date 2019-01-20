@@ -32,6 +32,9 @@
 # Setup --------------------------------------------------------
 ### Packages
 library(GenomicRanges)
+library(tidyverse)
+library(plyr)
+library(edgeR)
 
 ### Parameters
 ### All brain regions run in the same script (unlike jxns and regions)
