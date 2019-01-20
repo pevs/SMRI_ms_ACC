@@ -1,9 +1,11 @@
 # SMRI_Array_ACC_SZ
 
+***
 
 ## Description
 Analysis of RNA-Seq from the anterior cingulate cortex (ACC) of patients with schizophrenia (SZ) and unaffected controls (CTRL), from the Stanley Medical Research Institute (SMRI) Array Collection, using qSVA methodology to adjust for postmortem RNA degradation and derfinder for flexible expression quantification. Results were compared with RNA-Seq data from prefrontal cortex (PFC) and hippocampus (HPC) of the same individuals.  
 
+***
 
 ## Data
 
@@ -16,45 +18,49 @@ Analysis of RNA-Seq from the anterior cingulate cortex (ACC) of patients with sc
 ### Dorsolateral pre-frontal cortex (PFC; BA46)    
 [PsychENCODE's BrainGVEx](https://www.synapse.org/#!Synapse:syn4590909). Data available from [PsychENCODE Consortium’s BrainGVEX project](https://www.synapse.org/#!Synapse:syn4590909).
 
-### Additional data (e.g., qRT-PCR, protein expression, and cell type counts) available for samples at [SMRI Database](sncid.org).
+### Non-RNA-Seq
+Additional data (e.g., qRT-PCR, protein expression, and cell type counts) available for samples at [SMRI Database](sncid.org).
 
-
+***
 
 # Analysis workflow
 
-## Alignment
+## 1. Alignment
 run_align_hisat2.sh
 
-### Quantify feature expression
+## 2. Quantify feature expression
 
-#### Genes, exons, and junctions
+### Genes, exons, and junctions (featureCounts)
 run_counts_genes_exons_jxns.sh
 run_anno_genes_exons.R 
 run_anno_jxns.R 
 
-#### Regions
+### Regions (derfinder)
 run_counts_regions.sh
 run_anno_regions.sh
 
-### Data cleaning
+## 3. Preprocessing 
+
+### Combine region datasets
+__(insert here)__.R
 hpc_fix_qsva_regions.R
-exprsData_prep.R
 
 ### Filtering samples and features
+exprsData_prep.R
 exprsData_filter.R
 
-### Cohort descriptive stats
+### Cohort descriptive stats (tableone)
 cohort_stats.R
 
-### Outlier analysis with PCA
+## 4. Outlier analysis (PCA)
 pca.R
 
-## Estimate postmortem degradation with qSVA
+## 5. Estimate postmortem degradation (qSVA)
+run_qsva_degstats.sh
 qsva.R
 plot_qsva.R
 
-
-## Differential expression analysis
+## 6. Differential expression analysis
 
 ### Run edgeR stattests
 edgeR.R
@@ -74,8 +80,7 @@ plot_edgeR.R
 genelists.R
 
 
-
-## Enrichment testing of DEGs (in R)
+## 7. Enrichment testing of DEGs
 
 ### Cell type enrichment analysis
 
@@ -94,7 +99,7 @@ gsea_kegg.R
 plot_gsea_kegg.R
 
 
-## Overlap of DEGs with posthoc tests and other genesets
+## 8. Overlap of DEGs with posthoc tests and other genesets
 
 ### Annotation references
 anno_geneMap_genomicState.R
@@ -117,8 +122,8 @@ anno_PheGenI.R
 overlaps.R
 
 ### Plot overlaps
-[not finished] plot_UpSet.R
+_not finished_ plot_UpSet.R
 
 
-## Correlation/validation with SNCID data
-[not finished] addl_tests.R
+## 9. Correlation/validation with SNCID data
+_not finished_ addl_tests.R
