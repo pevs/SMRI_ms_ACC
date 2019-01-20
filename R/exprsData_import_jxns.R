@@ -8,11 +8,6 @@
 
 
 
-#### NOT RUN!!! PATHS NEED UPDATED, but this the current ones to find the data on external HD
-#### Need to add phenoData too "phenoList"
-### Specific for ACC???
-
-
 # Input files --------------------------------------------------
 ### exprsData (counts) 
 ### from `featureCounts`: raw counts; contains:
@@ -26,7 +21,7 @@
 #geneMap <- readRDS("input/refs/GeneMap_Hsapiens.gencode.v19.GRCh37.rds")
 
 ### phenoData
-#phenoList <-
+##phenoList <- saveRDS("input/phenoData/phenoData_full_list.rds")
 
 
 # Setup --------------------------------------------------------
@@ -38,13 +33,14 @@ brain_region <- "ACC"
 analysis_name <- paste0("exprsData_import_jxns_", brain_region)
 
 
-# [NEED TO ADD] Load phenoData -----------------------------------------------
+# Load phenoData -----------------------------------------------
 ### Load
-#phenoList <- 
+phenoList <- saveRDS("input/phenoData/phenoData_full_list.rds")
 
 ### Subset
 pheno <- phenoList[[brain_region]]
 rownames(pheno) <- pheno$FileName_counts 
+
 
 # Load counts --------------------------------------------------
 ### exprsData (counts)
