@@ -7,12 +7,6 @@
 ### Modified: 2018-06-01
 
 
-
-#### NOT RUN!!! PATHS NEED UPDATED, but this the current ones to find the data on external HD
-#### Need to add phenoData too "phenoList"
-### Specific for ACC???
-
-
 # Input files --------------------------------------------------
 ### exprsData (counts) 
 #regionMat <- readRDS(paste0("input/counts/regionMat_", brain_region, "_", read_length, "bp.rds"))
@@ -22,7 +16,7 @@
 #features <- readRDS(paste0("input/refs/features_", brain_region, "_regions.rds"))
 
 ### phenoData
-#phenoList <-
+#phenoList <- saveRDS("input/phenoData/phenoData_full_list.rds")
 
 
 # Setup --------------------------------------------------------
@@ -35,9 +29,9 @@ read_length <- 75
 analysis_name <- paste0("exprsData_import_regions_", brain_region)
 
 
-# [NEED TO ADD] Load phenoData -----------------------------------------------
+# Load phenoData -----------------------------------------------
 ### Load
-#phenoList <- 
+phenoList <- saveRDS("input/phenoData/phenoData_full_list.rds")
 
 ### Subset
 pheno <- phenoList[[brain_region]]
