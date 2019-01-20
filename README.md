@@ -8,13 +8,13 @@ Analysis of RNA-Seq from the anterior cingulate cortex (ACC) of patients with sc
 ## Data
 
 ### Anterior cingulate cortex (ACC; BA24)   
-[Zhao, et al. Transcriptome sequencing and genome-wide association analyses reveal lysosomal function and actin cytoskeleton remodeling in schizophrenia and bipolar disorder. Mol Psych 2015](http://www.nature.com/mp/journal/v20/n5/full/mp201482a.html). Data available from (SMRI)[http://sncid.stanleyresearch.org/].
+[Zhao, et al. Transcriptome sequencing and genome-wide association analyses reveal lysosomal function and actin cytoskeleton remodeling in schizophrenia and bipolar disorder. Mol Psych 2015](http://www.nature.com/mp/journal/v20/n5/full/mp201482a.html). Data available from [SMRI](http://sncid.stanleyresearch.org/).
 
 ### Hippocampus (HPC)
-[Darby, et al. Consistently altered expression of gene sets in postmortem brains of individuals with major psychiatric disorders. Transl Psych 2016](http://www.nature.com/tp/journal/v6/n9/full/tp2016173a.html). Data available from (SMRI)[http://sncid.stanleyresearch.org/].
+[Darby, et al. Consistently altered expression of gene sets in postmortem brains of individuals with major psychiatric disorders. Transl Psych 2016](http://www.nature.com/tp/journal/v6/n9/full/tp2016173a.html). Data available from [SMRI](http://sncid.stanleyresearch.org/).
 
 ### Dorsolateral pre-frontal cortex (PFC; BA46)    
-[PsychENCODE's BrainGVEx](https://www.synapse.org/#!Synapse:syn4590909). Data available from (PsychENCODE Consortium’s BrainGVEX project)[https://www.synapse.org/#!Synapse:syn4590909].
+[PsychENCODE's BrainGVEx](https://www.synapse.org/#!Synapse:syn4590909). Data available from [PsychENCODE Consortium’s BrainGVEX project](https://www.synapse.org/#!Synapse:syn4590909).
 
 ### Additional data (e.g., qRT-PCR, protein expression, and cell type counts) available for samples at [SMRI Database](sncid.org).
 
