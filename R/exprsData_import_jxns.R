@@ -44,7 +44,6 @@ phenoList <- readRDS("input/pheno/phenoData_full_list_degMat.rds")
 pheno <- phenoList[[brain_region]]
 rownames(pheno) <- pheno$FileName_counts 
 
-
 # Load counts --------------------------------------------------
 ### exprsData (counts)
 load("input/counts/rawCounts_n20_jxns_acc.rda") 
@@ -79,7 +78,7 @@ table(!is.na(features$gene_id) %in% geneMap$gene_id)
 table(duplicated(geneMap$gene_id))
 features <- geneMap %>%
   mutate(gene_strand = strand) %>%
-  dplyr::select(gene_id, gene_symbol, gene_type, gene_strand) %>%
+  select(gene_id, gene_symbol, gene_type, gene_strand) %>%
   plyr::join(
     features,
     by = "gene_id",
@@ -89,7 +88,7 @@ features <- geneMap %>%
     feature_name = gene_symbol,
     chr = seqnames
   ) %>%
-  dplyr::select(-one_of(c("newGeneID", "newGeneSymbol", "seqnames")))
+  select(-one_of(c("newGeneID", "newGeneSymbol", "seqnames")))
 
 ### Rownames = feature_id (must be df, not tibble!)
 features <- as.data.frame(features)
@@ -119,7 +118,7 @@ pheno$Dx <- pheno$group
 pheno$group <- NULL
 
 ### Combine into dge
-dge <- DGEList(
+dge <- edgeR::DGEList(
   counts = counts,
   genes = features,
   samples = pheno,
